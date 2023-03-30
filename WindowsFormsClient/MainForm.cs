@@ -46,7 +46,7 @@ namespace WindowsFormsClient
 
 
         Point mousePoint;
-
+        
         private void MainForm_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)

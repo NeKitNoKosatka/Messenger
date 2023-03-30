@@ -14,6 +14,7 @@ namespace Messenger
         public DateTime TimeStamp { get; set; }
         public int UserID { get; set; }
         public int ReceiverID { get; set; }
+        public int ChatID { get; set; }
 
         public Message()
         {
@@ -21,20 +22,23 @@ namespace Messenger
             MessageText = "Server is running";
             TimeStamp = DateTime.Now;
             UserID = 0;
+            ReceiverID = 1;
+            ChatID = 2;
         }
 
-        public Message(string userName, string messageText, DateTime timeStamp, int userID, int receiverID)
+        public Message(string userName, string messageText, DateTime timeStamp, int userID, int receiverID, int chatID)
         {
             UserName = userName;
             MessageText = messageText;
             TimeStamp = timeStamp;
             UserID = userID;
             ReceiverID = receiverID;
+            ChatID = chatID;
         }
 
         public override string ToString()
         {
-            string output = String.Format("@{3}\\{0} <{2}>: {1}, {4}", UserName, MessageText, TimeStamp, UserID, ReceiverID);
+            string output = String.Format("@{3}\\{0} <{2}>: {1}, {4}, chatid={5}", UserName, MessageText, TimeStamp, UserID, ReceiverID, ChatID);
             return output;
         }
     }
