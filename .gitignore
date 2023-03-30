@@ -1,8 +1,8 @@
 
 
 # ignore all dlls, exes, caches, pdbs, suos
-*.dll
 *.exe
+*.dll
 *.cache
 *.pdb
 *.suo
