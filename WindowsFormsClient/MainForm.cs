@@ -15,7 +15,7 @@ namespace WindowsFormsClient
 {
     public partial class MainForm : Form
     {   
-        //test git change 2
+        
         private static int MessageID = 0;
         //private static int MessageID_get = 0;
         private static string UserName = AuthorizationForm.UserName;
