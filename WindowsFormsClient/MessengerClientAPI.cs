@@ -17,7 +17,7 @@ namespace Messenger
         public void TestNewtonsoftJson()
         {
             // Тест JSon SerializeObject NewtonSoft
-            Message msg = new Message("Nik", "Hi u Hi", DateTime.UtcNow, 0, 1);
+            Message msg = new Message("Nik", "Hi u Hi", DateTime.UtcNow, 0, 1, 2);
             string output = JsonConvert.SerializeObject(msg);
             Console.WriteLine(output);
             Message deserializedMsg = JsonConvert.DeserializeObject<Message>(output);
