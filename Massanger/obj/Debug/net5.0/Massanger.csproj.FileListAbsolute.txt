@@ -1,0 +1,16 @@
+C:\Users\Source\Desktop\Работы\Своё\projects\Massanger\bin\Debug\net5.0\Massanger.exe
+C:\Users\Source\Desktop\Работы\Своё\projects\Massanger\bin\Debug\net5.0\Massanger.deps.json
+C:\Users\Source\Desktop\Работы\Своё\projects\Massanger\bin\Debug\net5.0\Massanger.runtimeconfig.json
+C:\Users\Source\Desktop\Работы\Своё\projects\Massanger\bin\Debug\net5.0\Massanger.runtimeconfig.dev.json
+C:\Users\Source\Desktop\Работы\Своё\projects\Massanger\bin\Debug\net5.0\Massanger.dll
+C:\Users\Source\Desktop\Работы\Своё\projects\Massanger\bin\Debug\net5.0\ref\Massanger.dll
+C:\Users\Source\Desktop\Работы\Своё\projects\Massanger\bin\Debug\net5.0\Massanger.pdb
+C:\Users\Source\Desktop\Работы\Своё\projects\Massanger\obj\Debug\net5.0\Massanger.csproj.AssemblyReference.cache
+C:\Users\Source\Desktop\Работы\Своё\projects\Massanger\obj\Debug\net5.0\Massanger.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Source\Desktop\Работы\Своё\projects\Massanger\obj\Debug\net5.0\Massanger.AssemblyInfoInputs.cache
+C:\Users\Source\Desktop\Работы\Своё\projects\Massanger\obj\Debug\net5.0\Massanger.AssemblyInfo.cs
+C:\Users\Source\Desktop\Работы\Своё\projects\Massanger\obj\Debug\net5.0\Massanger.csproj.CoreCompileInputs.cache
+C:\Users\Source\Desktop\Работы\Своё\projects\Massanger\obj\Debug\net5.0\Massanger.dll
+C:\Users\Source\Desktop\Работы\Своё\projects\Massanger\obj\Debug\net5.0\ref\Massanger.dll
+C:\Users\Source\Desktop\Работы\Своё\projects\Massanger\obj\Debug\net5.0\Massanger.pdb
+C:\Users\Source\Desktop\Работы\Своё\projects\Massanger\obj\Debug\net5.0\Massanger.genruntimeconfig.cache

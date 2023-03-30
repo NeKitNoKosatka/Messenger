@@ -1,0 +1,16 @@
+C:\Users\Source\Desktop\Работы\Своё\projects\test\bin\Debug\net5.0\test.exe
+C:\Users\Source\Desktop\Работы\Своё\projects\test\bin\Debug\net5.0\test.deps.json
+C:\Users\Source\Desktop\Работы\Своё\projects\test\bin\Debug\net5.0\test.runtimeconfig.json
+C:\Users\Source\Desktop\Работы\Своё\projects\test\bin\Debug\net5.0\test.runtimeconfig.dev.json
+C:\Users\Source\Desktop\Работы\Своё\projects\test\bin\Debug\net5.0\test.dll
+C:\Users\Source\Desktop\Работы\Своё\projects\test\bin\Debug\net5.0\ref\test.dll
+C:\Users\Source\Desktop\Работы\Своё\projects\test\bin\Debug\net5.0\test.pdb
+C:\Users\Source\Desktop\Работы\Своё\projects\test\obj\Debug\net5.0\test.csproj.AssemblyReference.cache
+C:\Users\Source\Desktop\Работы\Своё\projects\test\obj\Debug\net5.0\test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Source\Desktop\Работы\Своё\projects\test\obj\Debug\net5.0\test.AssemblyInfoInputs.cache
+C:\Users\Source\Desktop\Работы\Своё\projects\test\obj\Debug\net5.0\test.AssemblyInfo.cs
+C:\Users\Source\Desktop\Работы\Своё\projects\test\obj\Debug\net5.0\test.csproj.CoreCompileInputs.cache
+C:\Users\Source\Desktop\Работы\Своё\projects\test\obj\Debug\net5.0\test.dll
+C:\Users\Source\Desktop\Работы\Своё\projects\test\obj\Debug\net5.0\ref\test.dll
+C:\Users\Source\Desktop\Работы\Своё\projects\test\obj\Debug\net5.0\test.pdb
+C:\Users\Source\Desktop\Работы\Своё\projects\test\obj\Debug\net5.0\test.genruntimeconfig.cache
