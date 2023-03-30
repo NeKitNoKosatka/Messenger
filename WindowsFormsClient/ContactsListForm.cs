@@ -28,8 +28,11 @@ namespace WindowsFormsClient
         private void ContactsListForm_Load(object sender, EventArgs e)
         {
             DataBase db = new DataBase();
-            
-            string query = $"SELECT users.user_id, contacts.{AuthorizationForm.UserID}, users.first_name, users.second_name FROM users INNER JOIN contacts ON users.user_id=contacts.id WHERE contacts.{AuthorizationForm.UserID} IS NULL";
+
+            string query = $"SELECT * FROM `chat` WHERE `user_1` = 94 OR `user_2` = 92;";
+            //$"SELECT users.user_id, contacts.{AuthorizationForm.UserID}, users.first_name, users.second_name FROM users INNER JOIN contacts ON users.user_id=contacts.id WHERE contacts.{AuthorizationForm.UserID} IS NULL";
+
+            //string query = $"SELECT users.user_id, contacts.{AuthorizationForm.UserID}, users.first_name, users.second_name FROM users INNER JOIN contacts ON users.user_id=contacts.id WHERE contacts.{AuthorizationForm.UserID} IS NULL";
 
             MySqlCommand command = new MySqlCommand(query, db.GetConnection());
 
