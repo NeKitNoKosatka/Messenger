@@ -127,7 +127,7 @@ namespace WindowsFormsClient
             string Message = MessagesrichTB.Text;
             if (UserName != null)
             {
-                Messenger.Message msg = new Messenger.Message(UserName, Message, DateTime.Now, AuthorizationForm.UserID, Convert.ToInt32(contactID));
+                Messenger.Message msg = new Messenger.Message(UserName, Message, DateTime.Now, AuthorizationForm.UserID, Convert.ToInt32(contactID), 2); //edit 2
                 API.SendMessage(msg);
             }
             MessagesrichTB.Text = "";
