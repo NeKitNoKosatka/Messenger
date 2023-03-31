@@ -68,40 +68,18 @@ namespace WindowsFormsClient
                 DataBase db = new DataBase();
                 int contactID;
                 int.TryParse(string.Join("", new_contact.Where(c => char.IsDigit(c))), out contactID);
-                //contactID = new_contact.Substring(new_contact.Length - 3).Substring(0,2);
-
+                
                 string update_query_1 = $"INSERT INTO `chat` (`chat_id`, `user_1`, `user_2`) VALUES (NULL, {AuthorizationForm.UserID}, {contactID});";
-                    //$"UPDATE contacts SET `{AuthorizationForm.UserID}` = '' WHERE `contacts`.`id` = {contactID}";
-                //string update_query_2 = $"UPDATE contacts SET `{contactID}` = '' WHERE `contacts`.`id` = {AuthorizationForm.UserID}";
-
+               
                 MySqlCommand update_command_1 = new MySqlCommand(update_query_1, db.GetConnection());
-               //MySqlCommand update_command_2 = new MySqlCommand(update_query_2, db.GetConnection());
 
                 db.OpenConnection();
                 update_command_1.ExecuteNonQuery();
-                //update_command_2.ExecuteNonQuery();
                 db.CloseConnection();
 
+                //WindowsFormsClient.MainForm.
+                                    //.Items.Add($"{contact} (id:{ID})");
 
-                //string contacts_file_name = $@"\contacts_{AuthorizationForm.UserID}.env";
-
-                //string Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\MessangerWFClient\contacts";
-
-                //string path_to_contacts = Path + contacts_file_name;
-
-                //if (!Directory.Exists(Path))
-                //    Directory.CreateDirectory(Path);
-
-                //if (!File.Exists(path_to_contacts))
-                //{
-                //    string createText = new_contact + Environment.NewLine;
-                //    File.WriteAllText(path_to_contacts, createText);
-                //}
-                //else
-                //{
-                //    string appendText = new_contact + Environment.NewLine;
-                //    File.AppendAllText(path_to_contacts, appendText);
-                //}
                 this.Close();
             }
         }
