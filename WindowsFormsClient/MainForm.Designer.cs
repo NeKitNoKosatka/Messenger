@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsClient
 {
-    partial class MainForm
+    public partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -247,7 +247,7 @@ namespace WindowsFormsClient
         private System.Windows.Forms.Button closing_button;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.SplitContainer ContactsContainer;
-        private System.Windows.Forms.ListBox ContactslistBox;
+        public System.Windows.Forms.ListBox ContactslistBox;
         private System.Windows.Forms.ListBox MessageslistBox;
         private System.Windows.Forms.RichTextBox MessagesrichTB;
         private System.Windows.Forms.Button send_button;

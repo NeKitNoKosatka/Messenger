@@ -27,6 +27,7 @@ namespace WindowsFormsClient
         public MainForm()
         {
             InitializeComponent();
+            ContactslistBox = this.ContactslistBox;
         }
 
         private void closing_button_Click(object sender, EventArgs e)
