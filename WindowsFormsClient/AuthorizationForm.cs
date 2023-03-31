@@ -21,6 +21,7 @@ namespace WindowsFormsClient
         private long key_n;
         public static string UserName;
         public static int UserID;
+        public MainForm mainForm = new MainForm();
 
         public AuthorizationForm()
         {
@@ -107,7 +108,7 @@ namespace WindowsFormsClient
             if (protection.ToString(passUser_enter) == passUser_db) //(table.Rows.Count > 0)
             {
                 this.Hide();
-                MainForm mainForm = new MainForm();
+                
                 mainForm.Show();
             }
             else

@@ -17,10 +17,10 @@ namespace WindowsFormsClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
             //Application.Run(new Form1());
             //Application.Run(new RegistrationForm());
-            Application.Run(new AuthorizationForm());
+            AuthorizationForm authorizationForm = new AuthorizationForm();
+            Application.Run(authorizationForm);
             //Application.Run(new MainForm());
         }
          

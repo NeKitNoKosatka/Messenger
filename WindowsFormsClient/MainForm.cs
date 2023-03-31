@@ -27,7 +27,6 @@ namespace WindowsFormsClient
         public MainForm()
         {
             InitializeComponent();
-            ContactslistBox = this.ContactslistBox;
         }
 
         private void closing_button_Click(object sender, EventArgs e)
@@ -108,18 +107,26 @@ namespace WindowsFormsClient
         private void ContactslistBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selected_contact = (string)ContactslistBox.SelectedItem;
-            contactID = selected_contact.Substring(selected_contact.Length - 3).Substring(0, 2);
+            if (selected_contact != null)
+            {
+                contactID = selected_contact.Substring(selected_contact.Length - 3).Substring(0, 2);
 
-            MessageID = 0;         
+                MessageID = 0;
 
-            timer1.Stop();
+                timer1.Stop();
 
-            MessageslistBox.Items.Clear();
+                MessageslistBox.Items.Clear();
 
-            timer1.Tick += new EventHandler(TimerProcessor);
+                timer1.Tick += new EventHandler(TimerProcessor);
 
-            timer1.Interval = 1000;
-            timer1.Start();
+                timer1.Interval = 1000;
+                timer1.Start();
+            }
+            else
+            {
+                return;
+            }
+            
         }
 
 
@@ -164,11 +171,13 @@ namespace WindowsFormsClient
 
         private void new_contact_button_Click(object sender, EventArgs e)
         {
-            ContactsListForm contactsListForm = new ContactsListForm();
+            ContactsListForm contactsListForm = new ContactsListForm(this);
             contactsListForm.Show();
         }
 
-        private void reload_button_Click(object sender, EventArgs e)
+
+
+        public void update_ContactslistBox()
         {
             ContactslistBox.Items.Clear();
             DataBase db = new DataBase();

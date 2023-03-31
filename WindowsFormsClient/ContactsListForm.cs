@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace WindowsFormsClient
 {
     public partial class ContactsListForm : Form
@@ -17,12 +18,14 @@ namespace WindowsFormsClient
         private string contact;
         private int ID;
         private string new_contact;
-        private string contactID;
+        private int contactID;
+        private MainForm mainForm;
 
 
-        public ContactsListForm()
+        public ContactsListForm(MainForm f)
         {
             InitializeComponent();
+            mainForm = f;           
         }
 
         private void ContactsListForm_Load(object sender, EventArgs e)
@@ -66,7 +69,7 @@ namespace WindowsFormsClient
             if (result == DialogResult.Yes)
             {
                 DataBase db = new DataBase();
-                int contactID;
+                //int contactID;
                 int.TryParse(string.Join("", new_contact.Where(c => char.IsDigit(c))), out contactID);
                 
                 string update_query_1 = $"INSERT INTO `chat` (`chat_id`, `user_1`, `user_2`) VALUES (NULL, {AuthorizationForm.UserID}, {contactID});";
@@ -77,12 +80,15 @@ namespace WindowsFormsClient
                 update_command_1.ExecuteNonQuery();
                 db.CloseConnection();
 
-                //WindowsFormsClient.MainForm.
-                                    //.Items.Add($"{contact} (id:{ID})");
+                mainForm.update_ContactslistBox();
+
+
+                // mainForm.ContactslistBox.Items.Add($"{contact} (id:{ID})");
 
                 this.Close();
             }
         }
+
 
         Point mousePoint;
 
@@ -102,6 +108,7 @@ namespace WindowsFormsClient
 
         private void closing_button_Click(object sender, EventArgs e)
         {
+            
             this.Close();
         }
     }
