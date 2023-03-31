@@ -77,14 +77,25 @@ namespace test
         {
 
             //char[] letters = Enumerable.Range('a', 'z' - 'a' + 1).Select(c => (char)c).ToArray();
-            char[] letters = "#!@$%^&*()_-=+~/№;:[]{},.<>|?АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯ 1234567890абвгдеёжзийклмнопрстуфхцчшщъыьэюяABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".ToArray();
-            string x = "x";
-            Console.WriteLine(x);
-            x = x + "y";
-            Console.WriteLine(x);
-            test.Generator Gn = new test.Generator();
-            Console.WriteLine("result: " + Gn.GenerateNumberForKey()[0].ToString() + " " + Gn.GenerateNumberForKey()[1].ToString());
-            Console.WriteLine(letters[20]);
+            //char[] letters = "#!@$%^&*()_-=+~/№;:[]{},.<>|?АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯ 1234567890абвгдеёжзийклмнопрстуфхцчшщъыьэюяABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".ToArray();
+            //string x = "x";
+            //Console.WriteLine(x);
+            //x = x + "y";
+            //Console.WriteLine(x);
+            //test.Generator Gn = new test.Generator();
+            //Console.WriteLine("result: " + Gn.GenerateNumberForKey()[0].ToString() + " " + Gn.GenerateNumberForKey()[1].ToString());
+            //Console.WriteLine(letters[20]);
+
+            int intCatcher;
+
+            int.TryParse(string.Join("", "abc1as2ff dd2 m2n".Where(c => char.IsDigit(c))), out intCatcher);
+
+            Console.WriteLine(intCatcher);
+            
+            int.TryParse(string.Join("", "abcasff".Where(c => char.IsDigit(c))), out intCatcher);
+
+            Console.WriteLine(intCatcher);
+
         }
     }
 }

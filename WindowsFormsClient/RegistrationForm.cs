@@ -17,6 +17,8 @@ namespace WindowsFormsClient
     {
         static readonly Protection gen = new Protection();
         private int UserID;
+        private int intNameCatcher;
+        private int intSecNameCatcher;
         //static string txt = "ПРИВЕТ";
         //static readonly Generator generator = new Generator();
 
@@ -30,6 +32,12 @@ namespace WindowsFormsClient
 
             userSecondName_textBox.Text = "Введите фамилию";
             userSecondName_textBox.ForeColor = Color.Gray;
+
+            login_textBox.Text = "Введите логин";
+            login_textBox.ForeColor = Color.Gray;
+            
+            password_textBox.Text = "Введите пароль";
+            password_textBox.ForeColor = Color.Gray;
         }
 
         private void userFirstName_textBox_Enter(object sender, EventArgs e)
@@ -39,6 +47,7 @@ namespace WindowsFormsClient
                 userFirstName_textBox.Text = "";
                 userFirstName_textBox.ForeColor = Color.Black;
             }
+            
         }
 
         private void userFirstName_textBox_Leave(object sender, EventArgs e)
@@ -48,6 +57,8 @@ namespace WindowsFormsClient
                 userFirstName_textBox.Text = "Введите имя";
                 userFirstName_textBox.ForeColor = Color.Gray;
             }
+
+            
         }
 
         private void userSecondName_textBox_Enter(object sender, EventArgs e)
@@ -81,6 +92,10 @@ namespace WindowsFormsClient
             long[] Keys = gen.GenerateKeys();
             long Key_e = Keys[0];
             long Key_n = Keys[1];
+
+            int.TryParse(string.Join("", userFirstName_textBox.Text.Where(c => char.IsDigit(c))), out intNameCatcher);
+            int.TryParse(string.Join("", userSecondName_textBox.Text.Where(c => char.IsDigit(c))), out intSecNameCatcher);
+
             //long Key_d = Keys[2];
 
             if (userFirstName_textBox.Text == "Введите имя")
@@ -89,9 +104,21 @@ namespace WindowsFormsClient
                 return;
             }
 
+            if (intNameCatcher != 0)
+            {                
+                MessageBox.Show("Некорректное имя: имя содержит цифры");
+                return;
+            }
+            
             if (userSecondName_textBox.Text == "Введите фамилию")
             {
                 MessageBox.Show("Введите фамилию");
+                return;
+            }
+
+            if (intSecNameCatcher != 0)
+            {
+                MessageBox.Show("Некорректная Фамилия: фамилия содержит цифры");
                 return;
             }
 
@@ -293,6 +320,42 @@ namespace WindowsFormsClient
             this.Hide();
             AuthorizationForm authorizationForm = new AuthorizationForm();
             authorizationForm.Show();
+        }
+
+        private void login_textBox_Enter(object sender, EventArgs e)
+        {
+            if (login_textBox.Text == "Введите логин")
+            {
+                login_textBox.Text = "";
+                login_textBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void login_textBox_Leave(object sender, EventArgs e)
+        {
+            if (login_textBox.Text == "")
+            {
+                login_textBox.Text = "Введите логин";
+                login_textBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void password_textBox_Enter(object sender, EventArgs e)
+        {
+            if (login_textBox.Text == "Введите пароль")
+            {
+                password_textBox.Text = "";
+                password_textBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void password_textBox_Leave(object sender, EventArgs e)
+        {
+            if (login_textBox.Text == "")
+            {
+                password_textBox.Text = "Введите пароль";
+                password_textBox.ForeColor = Color.Black;
+            }
         }
     }
 }
