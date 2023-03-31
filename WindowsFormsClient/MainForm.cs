@@ -139,7 +139,7 @@ namespace WindowsFormsClient
 
             DataBase db = new DataBase();
 
-            string query = $"SELECT users.user_id, users.first_name, users.second_name FROM users JOIN chat ON users.user_id = chat.user_1 AND chat.user_2 = {AuthorizationForm.UserID} UNION SELECT users.user_id, users.first_name, users.second_name FROM users JOIN chat ON users.user_id = chat.user_2 AND chat.user_1 = {AuthorizationForm.UserID}; ";
+            string query = $"SELECT users.user_id, users.first_name, users.second_name FROM users JOIN chat ON users.user_id = chat.user_1 AND chat.user_2 = {AuthorizationForm.UserID} UNION SELECT users.user_id, users.first_name, users.second_name FROM users JOIN chat ON users.user_id = chat.user_2 AND chat.user_1 = {AuthorizationForm.UserID};";
                 //$"SELECT users.user_id, contacts.{AuthorizationForm.UserID}, users.first_name, users.second_name FROM users INNER JOIN contacts ON users.user_id=contacts.id WHERE contacts.{AuthorizationForm.UserID} IS NOT NULL";
 
             MySqlCommand command = new MySqlCommand(query, db.GetConnection());
@@ -172,7 +172,7 @@ namespace WindowsFormsClient
             ContactslistBox.Items.Clear();
             DataBase db = new DataBase();
 
-            string query = $"SELECT users.user_id, contacts.{AuthorizationForm.UserID}, users.first_name, users.second_name FROM users INNER JOIN contacts ON users.user_id=contacts.id WHERE contacts.{AuthorizationForm.UserID} IS NOT NULL";
+            string query = $"SELECT users.user_id, users.first_name, users.second_name FROM users JOIN chat ON users.user_id = chat.user_1 AND chat.user_2 = {AuthorizationForm.UserID} UNION SELECT users.user_id, users.first_name, users.second_name FROM users JOIN chat ON users.user_id = chat.user_2 AND chat.user_1 = {AuthorizationForm.UserID};";
 
             MySqlCommand command = new MySqlCommand(query, db.GetConnection());
 
@@ -184,7 +184,7 @@ namespace WindowsFormsClient
             while (reader.Read())
             {
                 ID = reader.GetInt32(0);
-                contact = reader.GetString(2) + " " + reader.GetString(3);
+                contact = reader.GetString(1) + " " + reader.GetString(2);
                 ContactslistBox.Items.Add($"{contact} (id:{ID})");
             }
 

@@ -1,4 +1,5 @@
 
+**/bin
 
 # ignore all dlls, exes, caches, pdbs, suos
 *.exe
