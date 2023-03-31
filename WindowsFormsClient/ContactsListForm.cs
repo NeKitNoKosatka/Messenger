@@ -29,7 +29,7 @@ namespace WindowsFormsClient
         {
             DataBase db = new DataBase();
 
-            string query = $"SELECT * FROM `chat` WHERE `user_1` = 94 OR `user_2` = 92;";
+            string query = $"SELECT users.user_id, users.first_name, users.second_name FROM users WHERE user_id NOT IN (SELECT users.user_id FROM users JOIN chat ON users.user_id = chat.user_1 AND chat.user_2 = {AuthorizationForm.UserID} UNION SELECT users.user_id FROM users JOIN chat ON users.user_id = chat.user_2 AND chat.user_1 = {AuthorizationForm.UserID});";
             //$"SELECT users.user_id, contacts.{AuthorizationForm.UserID}, users.first_name, users.second_name FROM users INNER JOIN contacts ON users.user_id=contacts.id WHERE contacts.{AuthorizationForm.UserID} IS NULL";
 
             //string query = $"SELECT users.user_id, contacts.{AuthorizationForm.UserID}, users.first_name, users.second_name FROM users INNER JOIN contacts ON users.user_id=contacts.id WHERE contacts.{AuthorizationForm.UserID} IS NULL";
@@ -44,7 +44,7 @@ namespace WindowsFormsClient
             while (reader.Read())
             {
                 ID = reader.GetInt32(0);
-                contact = reader.GetString(2) + " " + reader.GetString(3);
+                contact = reader.GetString(1) + " " + reader.GetString(2);
                 ContactslistBox.Items.Add($"{contact} (id:{ID})");
             }
 
@@ -66,17 +66,20 @@ namespace WindowsFormsClient
             if (result == DialogResult.Yes)
             {
                 DataBase db = new DataBase();
-                contactID = new_contact.Substring(new_contact.Length - 3).Substring(0,2);
-                
-                string update_query_1 = $"UPDATE contacts SET `{AuthorizationForm.UserID}` = '' WHERE `contacts`.`id` = {contactID}";
-                string update_query_2 = $"UPDATE contacts SET `{contactID}` = '' WHERE `contacts`.`id` = {AuthorizationForm.UserID}";
+                int contactID;
+                int.TryParse(string.Join("", new_contact.Where(c => char.IsDigit(c))), out contactID);
+                //contactID = new_contact.Substring(new_contact.Length - 3).Substring(0,2);
+
+                string update_query_1 = $"INSERT INTO `chat` (`chat_id`, `user_1`, `user_2`) VALUES (NULL, {AuthorizationForm.UserID}, {contactID});";
+                    //$"UPDATE contacts SET `{AuthorizationForm.UserID}` = '' WHERE `contacts`.`id` = {contactID}";
+                //string update_query_2 = $"UPDATE contacts SET `{contactID}` = '' WHERE `contacts`.`id` = {AuthorizationForm.UserID}";
 
                 MySqlCommand update_command_1 = new MySqlCommand(update_query_1, db.GetConnection());
-                MySqlCommand update_command_2 = new MySqlCommand(update_query_2, db.GetConnection());
+               //MySqlCommand update_command_2 = new MySqlCommand(update_query_2, db.GetConnection());
 
                 db.OpenConnection();
                 update_command_1.ExecuteNonQuery();
-                update_command_2.ExecuteNonQuery();
+                //update_command_2.ExecuteNonQuery();
                 db.CloseConnection();
 
 
