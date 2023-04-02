@@ -19,6 +19,9 @@ namespace WindowsFormsClient
         private int UserID;
         private int intNameCatcher;
         private int intSecNameCatcher;
+
+        private readonly string characters = "1234567890!@#$%^&*()_+-=\\№;:?/.,''<>|{}[]\"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯйцуке`нгшщзхъфывапролджэячсмитьбю ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
         //static string txt = "ПРИВЕТ";
         //static readonly Generator generator = new Generator();
 
@@ -128,11 +131,25 @@ namespace WindowsFormsClient
                 MessageBox.Show("Введите логин");
                 return;
             }
-
+            
             if (password_textBox.Text == "")
             {
                 MessageBox.Show("Введите пароль");
                 return;
+            }
+            else
+            {
+                for (int i = 0; i < password_textBox.Text.Length; i++)
+                {
+                    //Console.WriteLine($"c[{i}]: {password_textBox.Text[i]}");
+                    //Console.WriteLine($"pass length: {password_textBox.Text.Length}");
+                    //Console.WriteLine(characters.IndexOf(password_textBox.Text[i]));
+                    if (characters.IndexOf(password_textBox.Text[i]) == -1)
+                    {
+                        MessageBox.Show("Неккоректный символ в пароле: " + password_textBox.Text[i]);
+                        return;
+                    }           
+                }
             }
 
             if (isUserExists())
