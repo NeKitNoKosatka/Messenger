@@ -16,7 +16,7 @@ namespace WindowsFormsClient
     public partial class RegistrationForm : Form
     {
         static readonly Protection gen = new Protection();
-        private int UserID;
+        //private int UserID;
         private int intNameCatcher;
         private int intSecNameCatcher;
 
@@ -224,24 +224,24 @@ namespace WindowsFormsClient
 
             if (command.ExecuteNonQuery() == 1)
             {   
-                MySqlDataReader reader;
-                reader = command_for_user_id.ExecuteReader();
+                //MySqlDataReader reader;
+                //reader = command_for_user_id.ExecuteReader();
 
-                while (reader.Read())
-                {
-                    UserID = reader.GetInt32(0);
-                }
+                //while (reader.Read())
+                //{
+                //    UserID = reader.GetInt32(0);
+                //}
 
-                reader.Close();
+                //reader.Close();
 
-                string query_for_add_new_columns = "ALTER TABLE `contacts` ADD `" + UserID.ToString() + "` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL";
-                string query_for_add_new_rows = "INSERT INTO `contacts` (`id`) VALUES ('" + UserID.ToString() + "')";
+                //string query_for_add_new_columns = "ALTER TABLE `contacts` ADD `" + UserID.ToString() + "` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL";
+                //string query_for_add_new_rows = "INSERT INTO `contacts` (`id`) VALUES ('" + UserID.ToString() + "')";
 
-                MySqlCommand command_for_add_new_columns = new MySqlCommand(query_for_add_new_columns, db.GetConnection());
-                MySqlCommand command_for_add_new_rows = new MySqlCommand(query_for_add_new_rows, db.GetConnection());
+                //MySqlCommand command_for_add_new_columns = new MySqlCommand(query_for_add_new_columns, db.GetConnection());
+                //MySqlCommand command_for_add_new_rows = new MySqlCommand(query_for_add_new_rows, db.GetConnection());
 
-                command_for_add_new_columns.ExecuteNonQuery();
-                command_for_add_new_rows.ExecuteNonQuery();
+                //command_for_add_new_columns.ExecuteNonQuery();
+                //command_for_add_new_rows.ExecuteNonQuery();
 
                 MessageBox.Show("Аккаунт создан");
             }

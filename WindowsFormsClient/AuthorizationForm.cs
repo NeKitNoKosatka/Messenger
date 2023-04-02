@@ -16,6 +16,7 @@ namespace WindowsFormsClient
     public partial class AuthorizationForm : Form
     {
         private static readonly Protection protection = new Protection();
+        private string loginUser;
         private string passUser_db;
         private long key_e;
         private long key_n;
@@ -27,6 +28,11 @@ namespace WindowsFormsClient
         {
             InitializeComponent();
         }
+
+        //public string GetUserName()
+        //{
+        //    return UserName;
+        //}
 
         private void password_button_Click(object sender, EventArgs e)
         {
@@ -40,10 +46,13 @@ namespace WindowsFormsClient
 
         private void enter_button_Click(object sender, EventArgs e)
         {
+
             
-            String loginUser = login_textBox.Text; //gen.ToString(gen.Protect(login_textBox.Text, Key_e, Key_n));
+            loginUser = login_textBox.Text; //gen.ToString(gen.Protect(login_textBox.Text, Key_e, Key_n));
+            
+
             List<string> passUser_enter = new List<string>();
-                     
+           
             //long[] Keys = new long[3];
 
             DataBase db = new DataBase();
@@ -63,15 +72,20 @@ namespace WindowsFormsClient
             command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
             //command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
             
+
             db.OpenConnection();
             MySqlDataReader reader;
             reader = command.ExecuteReader();
             
             while (reader.Read())
             {
+                
                 passUser_db = reader.GetString(2);
+                
                 UserName = reader.GetString(3) + " " + reader.GetString(4);
+                
                 UserID = reader.GetInt32(0);
+                
                 key_e = reader.GetInt32(5);
                 key_n = reader.GetInt32(6);
                 //Console.WriteLine(reader.GetString(2) + ", " + reader.GetInt32(5) + ", " + reader.GetInt32(6));

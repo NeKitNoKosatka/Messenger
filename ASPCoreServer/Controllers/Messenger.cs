@@ -23,7 +23,8 @@ namespace ASPCoreServer.Controllers
         public string Get(int id)
         {
             string OutputString = "Not found";
-            if ((id < ListOfMessages.Count) && (id >= 0))
+            
+            if ((id < ListOfMessages.Count) && (id >= 0))        //&& (id != 5))
             {
                 OutputString = JsonConvert.SerializeObject(ListOfMessages[id]);
             }
@@ -38,6 +39,11 @@ namespace ASPCoreServer.Controllers
             if (msg == null)
             {
                 return BadRequest();
+            }
+            if (ListOfMessages.Count == 5)
+            {
+                Console.WriteLine("Cleaning server");
+                ListOfMessages.Clear();
             }
             ListOfMessages.Add(msg);
             Console.WriteLine(String.Format("Всего сообщений: {0} Посланное сообщение: {1}", ListOfMessages.Count, msg));

@@ -23,7 +23,7 @@ namespace Messenger
             TimeStamp = DateTime.Now;
             UserID = 0;
             ReceiverID = 1;
-            ChatID = 2;
+            ChatID = 0;
         }
 
         public Message(string userName, string messageText, DateTime timeStamp, int userID, int receiverID, int chatID)
