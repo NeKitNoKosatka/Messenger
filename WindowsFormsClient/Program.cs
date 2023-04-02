@@ -19,8 +19,8 @@ namespace WindowsFormsClient
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
             //Application.Run(new RegistrationForm());
-            AuthorizationForm authorizationForm = new AuthorizationForm();
-            Application.Run(authorizationForm);
+            //AuthorizationForm authorizationForm = new AuthorizationForm();
+            Application.Run(new AuthorizationForm());
             //Application.Run(new MainForm());
         }
          

@@ -17,16 +17,20 @@ namespace WindowsFormsClient
     {   
         
         private static int MessageID = 0;
+
         //private static int MessageID_get = 0;
-        private static string UserName = AuthorizationForm.UserName;
+        private static string userName;//AuthorizationForm.UserName;
         private static MessengerClientAPI API = new MessengerClientAPI();
         private string contact;
         private int ID;
         private string contactID;
+        //private AuthorizationForm authForm;
 
-        public MainForm()
+        public MainForm()        //AuthorizationForm f)
         {
             InitializeComponent();
+            //authForm = f;
+            
         }
 
         private void closing_button_Click(object sender, EventArgs e)
@@ -94,14 +98,17 @@ namespace WindowsFormsClient
         {
             Messenger.Message msg = API.GetMessage(MessageID);
 
-            if (msg != null && ((msg.UserID == AuthorizationForm.UserID && msg.ReceiverID == Convert.ToInt32(contactID)) || (msg.UserID == Convert.ToInt32(contactID) && msg.ReceiverID == AuthorizationForm.UserID)))
-            {
-                MessageslistBox.Items.Add(msg);
-                MessageID++;
-                msg = API.GetMessage(MessageID);    
-            }
-            else if (msg != null)
-                MessageID++;
+                Console.WriteLine("msg id: " + MessageID);
+
+                if (msg != null && ((msg.UserID == AuthorizationForm.UserID && msg.ReceiverID == Convert.ToInt32(contactID)) || (msg.UserID == Convert.ToInt32(contactID) && msg.ReceiverID == AuthorizationForm.UserID)))
+                {
+                    MessageslistBox.Items.Add(msg);
+                    MessageID++;
+                    //msg = API.GetMessage(MessageID);    
+                }
+                else if (msg != null)
+                    MessageID++;
+           
         }
 
         private void ContactslistBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -124,6 +131,7 @@ namespace WindowsFormsClient
             }
             else
             {
+                MessageID = 0;
                 return;
             }
             
@@ -133,17 +141,21 @@ namespace WindowsFormsClient
         private void send_button_Click(object sender, EventArgs e)
         {
             string Message = MessagesrichTB.Text;
-            if (UserName != null)
+            
+            if (userName != null)
             {
-                Messenger.Message msg = new Messenger.Message(UserName, Message, DateTime.Now, AuthorizationForm.UserID, Convert.ToInt32(contactID), 2); //edit 2(chatID)
+                Messenger.Message msg = new Messenger.Message(userName, Message, DateTime.Now, AuthorizationForm.UserID, Convert.ToInt32(contactID), 2); //edit 2(chatID)
                 API.SendMessage(msg);
+                
             }
             MessagesrichTB.Text = "";
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            user_name_label.Text = UserName;
+            userName = AuthorizationForm.UserName;
+            
+            user_name_label.Text = userName;
 
             DataBase db = new DataBase();
 
