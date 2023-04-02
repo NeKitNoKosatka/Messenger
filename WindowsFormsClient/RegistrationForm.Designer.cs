@@ -81,21 +81,21 @@ namespace WindowsFormsClient
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(161, 298);
+            this.label2.Location = new System.Drawing.Point(177, 297);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 25);
+            this.label2.Size = new System.Drawing.Size(86, 25);
             this.label2.TabIndex = 11;
-            this.label2.Text = "password";
+            this.label2.Text = "Пароль";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(188, 242);
+            this.label1.Location = new System.Drawing.Point(184, 241);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 25);
+            this.label1.Size = new System.Drawing.Size(73, 25);
             this.label1.TabIndex = 10;
-            this.label1.Text = "login";
+            this.label1.Text = "Логин";
             // 
             // password_textBox
             // 
@@ -135,7 +135,7 @@ namespace WindowsFormsClient
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(161, 169);
+            this.label3.Location = new System.Drawing.Point(169, 167);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 25);
             this.label3.TabIndex = 17;
@@ -145,7 +145,7 @@ namespace WindowsFormsClient
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(188, 113);
+            this.label4.Location = new System.Drawing.Point(198, 111);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 25);
             this.label4.TabIndex = 16;

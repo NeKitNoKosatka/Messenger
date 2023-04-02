@@ -46,9 +46,9 @@ namespace WindowsFormsClient
             this.auth_label.AutoSize = true;
             this.auth_label.Font = new System.Drawing.Font("GOST type A", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.auth_label.ForeColor = System.Drawing.Color.SpringGreen;
-            this.auth_label.Location = new System.Drawing.Point(120, 52);
+            this.auth_label.Location = new System.Drawing.Point(112, 42);
             this.auth_label.Name = "auth_label";
-            this.auth_label.Size = new System.Drawing.Size(270, 51);
+            this.auth_label.Size = new System.Drawing.Size(233, 42);
             this.auth_label.TabIndex = 0;
             this.auth_label.Text = "АВТОРИЗАЦИЯ";
             this.auth_label.MouseDown += new System.Windows.Forms.MouseEventHandler(this.auth_label_MouseDown);
@@ -56,16 +56,18 @@ namespace WindowsFormsClient
             // 
             // login_textBox
             // 
-            this.login_textBox.Location = new System.Drawing.Point(91, 156);
+            this.login_textBox.Location = new System.Drawing.Point(81, 125);
+            this.login_textBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.login_textBox.Name = "login_textBox";
-            this.login_textBox.Size = new System.Drawing.Size(323, 26);
+            this.login_textBox.Size = new System.Drawing.Size(288, 22);
             this.login_textBox.TabIndex = 1;
             // 
             // password_textBox
             // 
-            this.password_textBox.Location = new System.Drawing.Point(91, 226);
+            this.password_textBox.Location = new System.Drawing.Point(81, 181);
+            this.password_textBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.password_textBox.Name = "password_textBox";
-            this.password_textBox.Size = new System.Drawing.Size(323, 26);
+            this.password_textBox.Size = new System.Drawing.Size(288, 22);
             this.password_textBox.TabIndex = 2;
             this.password_textBox.UseSystemPasswordChar = true;
             // 
@@ -73,21 +75,21 @@ namespace WindowsFormsClient
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(222, 124);
+            this.label1.Location = new System.Drawing.Point(192, 99);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 29);
+            this.label1.Size = new System.Drawing.Size(73, 25);
             this.label1.TabIndex = 3;
-            this.label1.Text = "login";
+            this.label1.Text = "Логин";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(191, 194);
+            this.label2.Location = new System.Drawing.Point(186, 154);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(126, 29);
+            this.label2.Size = new System.Drawing.Size(86, 25);
             this.label2.TabIndex = 4;
-            this.label2.Text = "password";
+            this.label2.Text = "Пароль";
             // 
             // password_button
             // 
@@ -96,9 +98,10 @@ namespace WindowsFormsClient
             this.password_button.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.password_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.password_button.Image = ((System.Drawing.Image)(resources.GetObject("password_button.Image")));
-            this.password_button.Location = new System.Drawing.Point(420, 223);
+            this.password_button.Location = new System.Drawing.Point(373, 178);
+            this.password_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.password_button.Name = "password_button";
-            this.password_button.Size = new System.Drawing.Size(40, 33);
+            this.password_button.Size = new System.Drawing.Size(36, 26);
             this.password_button.TabIndex = 5;
             this.password_button.UseVisualStyleBackColor = false;
             this.password_button.Click += new System.EventHandler(this.password_button_Click);
@@ -111,9 +114,10 @@ namespace WindowsFormsClient
             this.enter_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.enter_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.enter_button.Font = new System.Drawing.Font("Gagalin", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.enter_button.Location = new System.Drawing.Point(138, 319);
+            this.enter_button.Location = new System.Drawing.Point(123, 255);
+            this.enter_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.enter_button.Name = "enter_button";
-            this.enter_button.Size = new System.Drawing.Size(228, 56);
+            this.enter_button.Size = new System.Drawing.Size(203, 45);
             this.enter_button.TabIndex = 6;
             this.enter_button.Text = "ВОЙТИ";
             this.enter_button.UseVisualStyleBackColor = true;
@@ -122,9 +126,9 @@ namespace WindowsFormsClient
             // register_link
             // 
             this.register_link.AutoSize = true;
-            this.register_link.Location = new System.Drawing.Point(190, 394);
+            this.register_link.Location = new System.Drawing.Point(169, 315);
             this.register_link.Name = "register_link";
-            this.register_link.Size = new System.Drawing.Size(120, 20);
+            this.register_link.Size = new System.Drawing.Size(105, 17);
             this.register_link.TabIndex = 7;
             this.register_link.TabStop = true;
             this.register_link.Text = "Нет аккаунта?";
@@ -138,9 +142,10 @@ namespace WindowsFormsClient
             this.closing_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MintCream;
             this.closing_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MintCream;
             this.closing_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closing_button.Location = new System.Drawing.Point(438, 12);
+            this.closing_button.Location = new System.Drawing.Point(389, 10);
+            this.closing_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.closing_button.Name = "closing_button";
-            this.closing_button.Size = new System.Drawing.Size(40, 33);
+            this.closing_button.Size = new System.Drawing.Size(36, 26);
             this.closing_button.TabIndex = 14;
             this.closing_button.Text = "X";
             this.closing_button.UseVisualStyleBackColor = true;
@@ -151,11 +156,11 @@ namespace WindowsFormsClient
             // AuthorizationForm
             // 
             this.AcceptButton = this.enter_button;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MintCream;
             this.CancelButton = this.closing_button;
-            this.ClientSize = new System.Drawing.Size(490, 450);
+            this.ClientSize = new System.Drawing.Size(436, 360);
             this.Controls.Add(this.closing_button);
             this.Controls.Add(this.register_link);
             this.Controls.Add(this.enter_button);
@@ -167,6 +172,7 @@ namespace WindowsFormsClient
             this.Controls.Add(this.auth_label);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AuthorizationForm";

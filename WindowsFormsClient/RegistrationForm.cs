@@ -38,6 +38,7 @@ namespace WindowsFormsClient
             
             password_textBox.Text = "Введите пароль";
             password_textBox.ForeColor = Color.Gray;
+            password_textBox.UseSystemPasswordChar = false;
         }
 
         private void userFirstName_textBox_Enter(object sender, EventArgs e)
@@ -336,14 +337,15 @@ namespace WindowsFormsClient
             if (login_textBox.Text == "")
             {
                 login_textBox.Text = "Введите логин";
-                login_textBox.ForeColor = Color.Black;
+                login_textBox.ForeColor = Color.Gray;
             }
         }
 
         private void password_textBox_Enter(object sender, EventArgs e)
         {
-            if (login_textBox.Text == "Введите пароль")
+            if (password_textBox.Text == "Введите пароль")
             {
+                password_textBox.UseSystemPasswordChar = true;
                 password_textBox.Text = "";
                 password_textBox.ForeColor = Color.Black;
             }
@@ -351,10 +353,11 @@ namespace WindowsFormsClient
 
         private void password_textBox_Leave(object sender, EventArgs e)
         {
-            if (login_textBox.Text == "")
+            if (password_textBox.Text == "")
             {
+                password_textBox.UseSystemPasswordChar = false;
                 password_textBox.Text = "Введите пароль";
-                password_textBox.ForeColor = Color.Black;
+                password_textBox.ForeColor = Color.Gray;
             }
         }
     }
