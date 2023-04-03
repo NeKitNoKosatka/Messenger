@@ -24,12 +24,12 @@ namespace ASPCoreServer.Controllers
         {
             string OutputString = "Not found";
 
-            if (IsClear())
-            {
-                Console.WriteLine("сервер пуст");
-                OutputString = "Server is clear";
-                return OutputString;
-            }
+            //if (IsClear())
+            //{
+            //    Console.WriteLine("сервер пуст");
+            //    OutputString = "Server is clear";
+            //    return OutputString;
+            //}
 
             if ((id < ListOfMessages.Count) && (id >= 0))        //&& (id != 5))
             {
@@ -49,19 +49,22 @@ namespace ASPCoreServer.Controllers
                 return BadRequest();
             }
 
+
             if (ListOfMessages.Count == 5)
             {
                 Console.WriteLine("Cleaning server");
-
-
-
                 ListOfMessages.Clear();
-                return new OkResult();
+                //return new OkResult();
             }
 
-            ListOfMessages.Add(msg);
-            Console.WriteLine(String.Format("Всего сообщений: {0} Посланное сообщение: {1}", ListOfMessages.Count, msg));
-            //return new NoContentResult();
+            if (msg.UserID == 0)
+                return new OkResult();
+            else
+            {
+                ListOfMessages.Add(msg);
+                Console.WriteLine(String.Format("Всего сообщений: {0} Посланное сообщение: {1}", ListOfMessages.Count, msg));
+                //return new NoContentResult();
+            }
 
             return new OkResult();
         }
