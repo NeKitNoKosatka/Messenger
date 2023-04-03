@@ -1,5 +1,4 @@
 C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\bin\Debug\WindowsFormsClient.pdb
-C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\Debug\WindowsFormsClient.csproj.AssemblyReference.cache
 C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\Debug\WindowsFormsClient.Properties.Resources.resources
 C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\Debug\WindowsFormsClient.csproj.GenerateResource.cache
 C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\Debug\WindowsFormsClient.csproj.CoreCompileInputs.cache
@@ -28,3 +27,4 @@ C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\bin\De
 C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\bin\Debug\WindowsFormsClient.exe
 C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\Debug\WindowsFormsClient.exe.config
 C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\Debug\WindowsFormsClient.exe
+C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\Debug\WindowsFormsClient.csproj.AssemblyReference.cache

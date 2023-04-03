@@ -14,10 +14,12 @@ namespace Messenger
     {
         private static readonly HttpClient client = new HttpClient();
         // тестовое сообщение в формате JSON
+        Message server_clear_msg = new Message("Admin", "Server is clear", DateTime.UtcNow, 0, 0, 0);
         public void TestNewtonsoftJson()
         {
             // Тест JSon SerializeObject NewtonSoft
             Message msg = new Message("Nik", "Hi u Hi", DateTime.UtcNow, 0, 1, 2);
+            
             string output = JsonConvert.SerializeObject(msg);
             Console.WriteLine(output);
             Message deserializedMsg = JsonConvert.DeserializeObject<Message>(output);
@@ -32,6 +34,12 @@ namespace Messenger
         // получение сообщение
         public Message GetMessage(int MessageId)
         {
+            //if (MessageId == 5)
+            //{
+            //    Console.WriteLine("null");
+            //    return null;
+            //}
+
             WebRequest request = WebRequest.Create("http://localhost:5000/api/Messenger/" + MessageId.ToString());
             request.Method = "Get";
             WebResponse response = request.GetResponse();
@@ -44,11 +52,16 @@ namespace Messenger
             reader.Close();
             dataStream.Close();
             response.Close();
-            if ((status.ToLower() == "ok") && (responseFromServer != "Not found"))
+            if ((status.ToLower() == "ok") && (responseFromServer != "Not found") && (responseFromServer != "Server is clear"))
             {
                 Message deserializedMsg = JsonConvert.DeserializeObject<Message>(responseFromServer);
                 //Console.WriteLine(deserializedMsg);
                 return deserializedMsg;
+            }
+            else if (responseFromServer == "Server is clear")
+            {
+                Console.WriteLine("сервер пуст");
+                return server_clear_msg;
             }
             return null;
         }
