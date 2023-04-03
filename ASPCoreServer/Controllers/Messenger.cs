@@ -23,11 +23,19 @@ namespace ASPCoreServer.Controllers
         public string Get(int id)
         {
             string OutputString = "Not found";
-            
+
+            if (IsClear())
+            {
+                Console.WriteLine("сервер пуст");
+                OutputString = "Server is clear";
+                return OutputString;
+            }
+
             if ((id < ListOfMessages.Count) && (id >= 0))        //&& (id != 5))
             {
                 OutputString = JsonConvert.SerializeObject(ListOfMessages[id]);
             }
+            
             Console.WriteLine(String.Format("Запрошено сообщение № {0} : {1}", id, OutputString));
             return OutputString;
         }
@@ -40,17 +48,33 @@ namespace ASPCoreServer.Controllers
             {
                 return BadRequest();
             }
+
             if (ListOfMessages.Count == 5)
             {
                 Console.WriteLine("Cleaning server");
+
+
+
                 ListOfMessages.Clear();
+                return new OkResult();
             }
+
             ListOfMessages.Add(msg);
             Console.WriteLine(String.Format("Всего сообщений: {0} Посланное сообщение: {1}", ListOfMessages.Count, msg));
             //return new NoContentResult();
+
             return new OkResult();
         }
 
         
+
+        static private bool IsClear()
+        {
+            if (ListOfMessages.Count == 0)
+                return true;
+            else
+                return false;
+        }
+
     }
 }

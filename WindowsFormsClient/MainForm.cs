@@ -96,19 +96,32 @@ namespace WindowsFormsClient
 
         private void TimerProcessor(Object myObject, EventArgs myEventArgs)
         {
+            
+
             Messenger.Message msg = API.GetMessage(MessageID);
 
-                Console.WriteLine("msg id: " + MessageID);
+            Console.WriteLine("msg id: " + MessageID);
+            Console.WriteLine("msg: " + msg);
+            //Console.WriteLine("msg text: " + msg.MessageText);
 
-                if (msg != null && ((msg.UserID == AuthorizationForm.UserID && msg.ReceiverID == Convert.ToInt32(contactID)) || (msg.UserID == Convert.ToInt32(contactID) && msg.ReceiverID == AuthorizationForm.UserID)))
-                {
-                    MessageslistBox.Items.Add(msg);
-                    MessageID++;
-                    //msg = API.GetMessage(MessageID);    
-                }
-                else if (msg != null)
-                    MessageID++;
-           
+            if (msg != null && msg.UserID == 0 && msg.MessageText == "Server is clear")
+            {
+                MessageID = 0;
+                return;
+            }
+
+            if (msg != null && ((msg.UserID == AuthorizationForm.UserID && msg.ReceiverID == Convert.ToInt32(contactID)) || (msg.UserID == Convert.ToInt32(contactID) && msg.ReceiverID == AuthorizationForm.UserID)))
+            {
+                MessageslistBox.Items.Add(msg);
+                MessageID++;
+                //msg = API.GetMessage(MessageID);    
+            }
+            else if (msg != null)
+            {
+                MessageID++;
+            }
+            
+
         }
 
         private void ContactslistBox_SelectedIndexChanged(object sender, EventArgs e)
