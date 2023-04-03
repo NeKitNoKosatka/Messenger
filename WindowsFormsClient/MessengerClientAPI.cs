@@ -34,7 +34,7 @@ namespace Messenger
         // получение сообщение
         public Message GetMessage(int MessageId)
         {
-            //if (MessageId == 5)
+            //if (MessageId == 10)
             //{
             //    Console.WriteLine("null");
             //    return null;
@@ -58,11 +58,11 @@ namespace Messenger
                 //Console.WriteLine(deserializedMsg);
                 return deserializedMsg;
             }
-            else if (responseFromServer == "Server is clear")
-            {
-                Console.WriteLine("сервер пуст");
-                return server_clear_msg;
-            }
+            //else if (responseFromServer == "Server is clear")
+            //{
+            //    Console.WriteLine("сервер пуст");
+            //    return server_clear_msg;
+            //}
             return null;
         }
 
