@@ -52,10 +52,11 @@ namespace Messenger
             reader.Close();
             dataStream.Close();
             response.Close();
-            if ((status.ToLower() == "ok") && (responseFromServer != "Not found") && (responseFromServer != "Server is clear"))
+            if ((status.ToLower() == "ok") && (responseFromServer != "Not found")) //&& (responseFromServer != "Server is clear"))
             {
                 Message deserializedMsg = JsonConvert.DeserializeObject<Message>(responseFromServer);
                 //Console.WriteLine(deserializedMsg);
+                //Console.WriteLine(responseFromServer);
                 return deserializedMsg;
             }
             //else if (responseFromServer == "Server is clear")

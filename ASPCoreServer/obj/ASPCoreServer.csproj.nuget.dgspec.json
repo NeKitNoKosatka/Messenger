@@ -48,9 +48,17 @@
               "target": "Package",
               "version": "[5.0.17, )"
             },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.32.1, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[9.0.1, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[5.0.4, )"
             }
           },
           "imports": [
