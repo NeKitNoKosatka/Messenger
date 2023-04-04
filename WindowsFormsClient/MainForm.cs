@@ -23,7 +23,8 @@ namespace WindowsFormsClient
         private static MessengerClientAPI API = new MessengerClientAPI();
         private string contact;
         private int ID;
-        private string contactID;
+        private int contactID;
+        private int chatID;
         //private AuthorizationForm authForm;
 
         public MainForm()        //AuthorizationForm f)
@@ -140,7 +141,31 @@ namespace WindowsFormsClient
             string selected_contact = (string)ContactslistBox.SelectedItem;
             if (selected_contact != null)
             {
-                contactID = selected_contact.Substring(selected_contact.Length - 3).Substring(0, 2);
+                //contactID = selected_contact.Substring(selected_contact.Length - 3).Substring(0, 2);
+
+                int.TryParse(string.Join("", selected_contact.Where(c => char.IsDigit(c))), out contactID);
+
+                DataBase db = new DataBase();
+
+                string query = "SELECT chat_id FROM chat WHERE (user_1 = @user_1 AND user_2 = @user_2) OR (user_1 = @user_2 AND user_2 = @user_1);";
+
+                MySqlCommand command = new MySqlCommand(query, db.GetConnection());
+
+                command.Parameters.Add("@user_1", MySqlDbType.VarChar).Value = AuthorizationForm.UserID;
+                command.Parameters.Add("@user_2", MySqlDbType.VarChar).Value = contactID;
+
+                db.OpenConnection();
+
+                MySqlDataReader reader;
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    chatID = reader.GetInt32(0);
+                }
+
+                reader.Close();
+                db.CloseConnection();
 
                 MessageID = 0;
 
@@ -168,9 +193,8 @@ namespace WindowsFormsClient
             
             if (userName != null)
             {
-                Messenger.Message msg = new Messenger.Message(userName, Message, DateTime.Now, AuthorizationForm.UserID, Convert.ToInt32(contactID), 2); //edit 2(chatID)
+                Messenger.Message msg = new Messenger.Message(userName, Message, DateTime.Now, AuthorizationForm.UserID, Convert.ToInt32(contactID), chatID); //edit 2(chatID)
                 API.SendMessage(msg);
-                
             }
             MessagesrichTB.Text = "";
         }

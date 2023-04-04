@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using MySql.Data.MySqlClient;
+
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -53,6 +55,40 @@ namespace ASPCoreServer.Controllers
             if (ListOfMessages.Count == 5)
             {
                 Console.WriteLine("Cleaning server");
+
+                DB db = new DB();
+
+                string query = $"INSERT INTO db.content(`content_id`, `content`) VALUES(NULL, @content); INSERT INTO db.`message` (`message_id`, `chat_id`, `sender_id`, `content_id`, `send_date`) VALUES(NULL, @chat_id, @sender_id, (SELECT @@IDENTITY), @send_date);";
+                
+
+                int counter = 0;
+                foreach (Message message in ListOfMessages)
+                {
+                    MySqlCommand command = new MySqlCommand(query, db.GetConnection());
+                    command.Parameters.Add("@content", MySqlDbType.VarChar).Value = message.MessageText;
+                    command.Parameters.Add("@chat_id", MySqlDbType.VarChar).Value = message.ChatID;
+                    command.Parameters.Add("@sender_id", MySqlDbType.VarChar).Value = message.UserID;
+
+                    int x = message.TimeStamp.ToString("u").Length - 1;
+                    var date = message.TimeStamp.ToString("u").Remove(x);
+                    command.Parameters.Add("@send_date", MySqlDbType.VarChar).Value = date;
+                    
+                    Console.WriteLine(message.ChatID);
+
+                    db.OpenConnection();
+                    MySqlDataReader reader;
+                    reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        counter++;
+                        Console.WriteLine("Message №" + counter + "sent to db");
+                    }
+
+                    reader.Close();
+                    db.CloseConnection();
+                }
+
                 ListOfMessages.Clear();
                 //return new OkResult();
             }

@@ -21,6 +21,7 @@ namespace Messenger
             UserName = "System";
             MessageText = "Server is running";
             TimeStamp = DateTime.Now;
+            //TimeStamp.ToString("u");
             UserID = 0;
             ReceiverID = 1;
             ChatID = 0;
