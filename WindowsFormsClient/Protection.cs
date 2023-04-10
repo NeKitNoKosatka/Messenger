@@ -86,6 +86,10 @@ namespace WindowsFormsClient
         // зашифровать
         public List<string> Protect(string text, long Key_e, long Key_n)
         {
+            if (Key_n == 0)
+            {
+                return null;
+            }
             List<string> result = RSA_Endoce(text, Key_e, Key_n); //keys[0] == e_, keys[1] == n
 
             return result;
