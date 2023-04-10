@@ -99,7 +99,7 @@ namespace WindowsFormsClient
             //command.Parameters.Add("@uL", OleDbType.VarChar).Value = loginUser;
             //command.Parameters.Add("@uP", OleDbType.VarChar).Value = passUser;
 
-            
+
             //string keys_file_name = @"\keys_" + login_textBox.Text + ".env";
 
             //string Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\MessangerWFClient\keys";
@@ -110,11 +110,18 @@ namespace WindowsFormsClient
             //StreamReader rs = new StreamReader(path_to_keys);
             //    for (int i = 0; i < 3; i++)
             //        Keys[i] = Convert.ToInt64(rs.ReadLine());
-                
+
             //rs.Close();
 
             //passUser_enter = protection.Protect(password_textBox.Text, Keys[0], Keys[1]);
-            passUser_enter = protection.Protect(password_textBox.Text, key_e, key_n);
+            if (key_n != 0)
+            {
+                passUser_enter = protection.Protect(password_textBox.Text, key_e, key_n);
+            }
+            else
+            {
+                passUser_db = null;
+            }
 
             //adapter.SelectCommand = command;
             //adapter.Fill(table);

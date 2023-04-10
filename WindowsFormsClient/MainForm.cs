@@ -138,6 +138,8 @@ namespace WindowsFormsClient
 
         private void ContactslistBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            MessageslistBox.Items.Clear();
+
             string selected_contact = (string)ContactslistBox.SelectedItem;
             if (selected_contact != null)
             {
@@ -153,7 +155,7 @@ namespace WindowsFormsClient
 
                 command.Parameters.Add("@user_1", MySqlDbType.VarChar).Value = AuthorizationForm.UserID;
                 command.Parameters.Add("@user_2", MySqlDbType.VarChar).Value = contactID;
-
+                         
                 db.OpenConnection();
 
                 MySqlDataReader reader;
@@ -165,14 +167,33 @@ namespace WindowsFormsClient
                 }
 
                 reader.Close();
+
+                string query_old_messages = "SELECT users.user_id, users.first_name, users.second_name, s.chat_id, s.content, s.send_date FROM(SELECT message.chat_id, message.sender_id, content.content, message.send_date FROM content JOIN message ON content.content_id = message.content_id WHERE message.chat_id = @chat_id) s JOIN users ON users.user_id = s.sender_id;";
+
+                MySqlCommand command_old_messages = new MySqlCommand(query_old_messages, db.GetConnection());
+
+                command_old_messages.Parameters.Add("@chat_id", MySqlDbType.VarChar).Value = chatID;
+
+                reader = command_old_messages.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    userName = reader.GetString(1) + " " + reader.GetString(2);
+                    Messenger.Message msg_old = new Messenger.Message(userName, reader.GetString(4), reader.GetDateTime(5), reader.GetInt32(0), 0, chatID);
+                    MessageslistBox.Items.Add(msg_old);
+
+                    Console.WriteLine("msg from db:" + msg_old);
+                }
+
+
+                reader.Close();
                 db.CloseConnection();
 
                 MessageID = 0;
 
                 timer1.Stop();
 
-                MessageslistBox.Items.Clear();
-
+           
                 timer1.Tick += new EventHandler(TimerProcessor);
 
                 timer1.Interval = 1000;

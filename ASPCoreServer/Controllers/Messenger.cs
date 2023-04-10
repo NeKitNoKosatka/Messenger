@@ -20,6 +20,8 @@ namespace ASPCoreServer.Controllers
 
         static List<Message> ListOfMessages = new List<Message>();
 
+        private static bool clean_status = false;
+
         // GET api/<Messenger>/5
         [HttpGet("{id}")]
         public string Get(int id)
@@ -51,9 +53,11 @@ namespace ASPCoreServer.Controllers
                 return BadRequest();
             }
 
+            
 
-            if (ListOfMessages.Count == 5)
+            if (ListOfMessages.Count == 5 && clean_status != true)
             {
+                clean_status = true;
                 Console.WriteLine("Cleaning server");
 
                 DB db = new DB();
@@ -87,6 +91,8 @@ namespace ASPCoreServer.Controllers
 
                     reader.Close();
                     db.CloseConnection();
+
+                    clean_status = false;
                 }
 
                 ListOfMessages.Clear();
@@ -105,7 +111,15 @@ namespace ASPCoreServer.Controllers
             return new OkResult();
         }
 
-        
+
+        static private bool IsCleaning()
+        {
+            if (ListOfMessages.Count == 0)
+                return true;
+            else
+                return false;
+        }
+
 
         static private bool IsClear()
         {
