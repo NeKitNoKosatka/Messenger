@@ -196,7 +196,7 @@ namespace WindowsFormsClient
            
                 timer1.Tick += new EventHandler(TimerProcessor);
 
-                timer1.Interval = 1000;
+                timer1.Interval = 1; //интервал таймера, запрашивающего новые сообщения у сервера
                 timer1.Start();
             }
             else
