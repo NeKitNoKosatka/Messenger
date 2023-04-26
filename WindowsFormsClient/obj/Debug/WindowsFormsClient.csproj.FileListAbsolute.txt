@@ -27,4 +27,5 @@ C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\bin\De
 C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\bin\Debug\WindowsFormsClient.exe
 C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\Debug\WindowsFormsClient.exe.config
 C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\Debug\WindowsFormsClient.exe
+C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\Debug\WindowsFormsClient.Form1.resources
 C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\Debug\WindowsFormsClient.csproj.AssemblyReference.cache

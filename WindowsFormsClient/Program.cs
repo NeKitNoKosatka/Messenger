@@ -20,9 +20,12 @@ namespace WindowsFormsClient
             //Application.Run(new Form1());
             //Application.Run(new RegistrationForm());
             //AuthorizationForm authorizationForm = new AuthorizationForm();
-            Application.Run(new AuthorizationForm());
+
+            //Application.Run(new AuthorizationForm());
             //Application.Run(new MainForm());
+            Application.Run(new Form1());
+
         }
-         
+
     }
 }
