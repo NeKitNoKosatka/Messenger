@@ -71,6 +71,8 @@ namespace WindowsFormsClient
         {
             ContactslistBox.Items.Add("    " + "Name SecondName");
             MessageslistBox.Items.Add("очень длинное сообщенеие, которое не поместится в боксе, оно, правда, очень длинное, и места под него совсем нет. В этом можно не сомневаться. и ещё раз.очень длинное сообщенеие, которое не поместится в боксе, оно, правда, очень длинное, и места под него совсем нет. В этом можно не сомневаться");
+            MessageslistBox.Items.Add(" ");
+
 
             //MessageslistBox.Update();
         }
@@ -154,8 +156,8 @@ namespace WindowsFormsClient
                                           e.Bounds,
                                           e.Index,
                                           e.State ^ DrawItemState.Selected,
-                                          e.ForeColor,
-                                          Color.FromArgb(160, 231, 159));// <- обратить внимание сюда
+                                          Color.Black,
+                                          Color.FromArgb(255,255,255));// <- обратить внимание сюда 160, 231, 159 e.ForeColor
 
             // Начинаем рисовать
             // Рисуем Background для каждого элемента
@@ -168,6 +170,33 @@ namespace WindowsFormsClient
 
             // если у текущеного элемента есть фокус, эта функция нарисует фокус
             e.DrawFocusRectangle();
+        }
+
+        private void send_button_MouseEnter(object sender, EventArgs e)
+        {
+            //send_button.ForeColor = Color.FromArgb(20, 148, 137);
+        }
+
+        private void send_button_MouseLeave(object sender, EventArgs e)
+        {
+            //send_button.ForeColor = Color.Black;
+        }
+
+        private void send_button_MouseDown(object sender, MouseEventArgs e)
+        {
+            send_button.ForeColor = Color.FromArgb(20, 148, 137);
+            //send_button.ForeColor = Color.FromArgb(29, 203, 188);
+        }
+
+        private void send_button_MouseUp(object sender, MouseEventArgs e)
+        {
+            send_button.ForeColor = Color.Black;
+            //send_button.ForeColor = Color.FromArgb(20, 148, 137);
+        }
+
+        private void tableLayoutPanel6_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
