@@ -147,9 +147,11 @@
   <ItemGroup>
     <Content Include="icons\user.ico" />
     <Content Include="images\eye.png" />
+    <Content Include="images\messagebox.png" />
     <Content Include="images\plus.png" />
     <Content Include="images\reload.png" />
     <Content Include="images\send.png" />
+    <Content Include="images\sendbutton.png" />
     <Content Include="images\user.png" />
   </ItemGroup>
   <ItemGroup>
