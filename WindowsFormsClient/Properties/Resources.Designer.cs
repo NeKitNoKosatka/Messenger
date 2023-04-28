@@ -113,6 +113,16 @@ namespace WindowsFormsClient.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap send_button_back {
+            get {
+                object obj = ResourceManager.GetObject("send_button_back", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sendbutton {
             get {
                 object obj = ResourceManager.GetObject("sendbutton", resourceCulture);

@@ -17,13 +17,99 @@ namespace WindowsFormsClient
         {
             InitializeComponent();
 
+            //transpTLP.Location = new Point(0, 0);
+            ////transpTLP.Parent = MessageslistBox;
+            //transpTLP.Dock = DockStyle.Bottom;
+            ////transpTLP.Anchor = AnchorStyles.Bottom;
+            //transpTLP.AutoSize = true;
+            //transpTLP.MaximumSize = new Size(0, 100);
+
+            //transpTLP.ColumnStyles.Add(new ColumnStyle());
+            //transpTLP.ColumnStyles.Add(new ColumnStyle());
+            //transpTLP.Controls.Add(richTextBox2);
+
+            tableLayoutPanel7.Controls.Add(richTextBox2, 1, 0);
+            tableLayoutPanel7.AutoSize = true;
+
+
+
             //Paint += new PaintEventHandler(info_panel_Paint);//перерисовываем messageBox
 
-            //tableLayoutPanel1.BackColor = Color.Red;
+            //tableLayoutPanel7.BackColor = Color.Red;
             //this.TransparencyKey = Color.Red;
 
             //Paint += new PaintEventHandler(info_panel_Paint);//перерисовываем infoPanel
         }
+
+        public class TranspTLP : TableLayoutPanel           //ExtendedPanel : Panel
+        {
+            private const int WS_EX_TRANSPARENT = 0x20;
+            public TranspTLP()
+            {
+                SetStyle(ControlStyles.Opaque, true);
+            }
+
+            private int opacity = 0;
+            [DefaultValue(50)]
+            public int Opacity
+            {
+                get
+                {
+                    return this.opacity;
+                }
+                set
+                {
+                    if (value < 0 || value > 100)
+                        throw new ArgumentException("value must be between 0 and 100");
+                    this.opacity = value;
+                }
+            }
+            protected override CreateParams CreateParams
+            {
+                get
+                {
+                    CreateParams cp = base.CreateParams;
+                    cp.ExStyle = cp.ExStyle | WS_EX_TRANSPARENT;
+                    return cp;
+                }
+            }
+            protected override void OnPaint(PaintEventArgs e)
+            {
+                using (var brush = new SolidBrush(Color.FromArgb(this.opacity * 255 / 100, Color.Black)))  //this.BackColor
+                {
+                    e.Graphics.FillRectangle(brush, this.ClientRectangle);
+                }                
+                base.OnPaint(e);
+            }
+
+
+        }
+
+
+
+        //class TranspTLP : TableLayoutPanel
+
+        //{
+
+        //    protected override CreateParams CreateParams
+
+        //    {
+
+        //        get
+
+        //        {
+
+        //            CreateParams cp = base.CreateParams;
+
+        //            cp.ExStyle |= 0x00000020; //This returns the transparent (no background painting) mode
+
+        //            return cp;
+
+        //        }
+
+        //    }
+
+        //}
 
         //[Flags]
         //enum AnimateWindowFlags
@@ -71,6 +157,7 @@ namespace WindowsFormsClient
         {
             ContactslistBox.Items.Add("    " + "Name SecondName");
             MessageslistBox.Items.Add("очень длинное сообщенеие, которое не поместится в боксе, оно, правда, очень длинное, и места под него совсем нет. В этом можно не сомневаться. и ещё раз.очень длинное сообщенеие, которое не поместится в боксе, оно, правда, очень длинное, и места под него совсем нет. В этом можно не сомневаться");
+            MessageslistBox.Items.Add("system");
             MessageslistBox.Items.Add(" ");
 
 
@@ -197,6 +284,35 @@ namespace WindowsFormsClient
         private void tableLayoutPanel6_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void richTextBox2_ContentsResized(object sender, ContentsResizedEventArgs e)
+        {
+            ((RichTextBox)sender).Height = e.NewRectangle.Height + 5;
+            ((RichTextBox)sender).Location = new Point(((RichTextBox)sender).Location.X, ((RichTextBox)sender).Location.Y - 16);
+
+        }
+
+        private void richTextBox1_ContentsResized(object sender, ContentsResizedEventArgs e)
+        {
+            ((RichTextBox)sender).Height = e.NewRectangle.Height + 5;
+            ((RichTextBox)sender).Location = new Point(((RichTextBox)sender).Location.X, ((RichTextBox)sender).Location.Y - 5);
+        }
+
+        private void tableLayoutPanel7_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
+        
+
+        private void richTextBox2_SizeChanged(object sender, EventArgs e)
+        {
+            //MessageslistBox.Items.Add("拐杖");
+            //MessageslistBox.Items.Remove("拐杖");
+            //Paint += new PaintEventHandler(transpTLP_Paint);
+            //MessageslistBox.Refresh();
+            //this.Refresh();
+            //transpTLP.Refresh();
         }
     }
 }
