@@ -28,8 +28,7 @@ namespace WindowsFormsClient
             //transpTLP.ColumnStyles.Add(new ColumnStyle());
             //transpTLP.Controls.Add(richTextBox2);
 
-            tableLayoutPanel7.Controls.Add(richTextBox2, 1, 0);
-            tableLayoutPanel7.AutoSize = true;
+            
 
 
 
@@ -293,11 +292,6 @@ namespace WindowsFormsClient
 
         }
 
-        private void richTextBox1_ContentsResized(object sender, ContentsResizedEventArgs e)
-        {
-            ((RichTextBox)sender).Height = e.NewRectangle.Height + 5;
-            ((RichTextBox)sender).Location = new Point(((RichTextBox)sender).Location.X, ((RichTextBox)sender).Location.Y - 5);
-        }
 
         private void tableLayoutPanel7_Paint(object sender, PaintEventArgs e)
         {
