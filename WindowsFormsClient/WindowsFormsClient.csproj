@@ -152,6 +152,7 @@
     <Content Include="images\reload.png" />
     <Content Include="images\send.png" />
     <Content Include="images\sendbutton.png" />
+    <None Include="images\send_button_back.png" />
     <Content Include="images\user.png" />
   </ItemGroup>
   <ItemGroup>
