@@ -35,10 +35,12 @@ namespace WindowsFormsClient
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.send_mess_button = new System.Windows.Forms.Button();
             this.send_button = new System.Windows.Forms.Button();
             this.send_button_pictureBox = new System.Windows.Forms.PictureBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.MessageslistBox = new System.Windows.Forms.ListBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -56,8 +58,6 @@ namespace WindowsFormsClient
             this.plus_label = new System.Windows.Forms.Label();
             this.new_contact_button = new System.Windows.Forms.Button();
             this.ContactslistBox = new System.Windows.Forms.ListBox();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.send_mess_button = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -151,26 +151,41 @@ namespace WindowsFormsClient
             // 
             // tableLayoutPanel7
             // 
-            this.tableLayoutPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel7.AutoSize = true;
             this.tableLayoutPanel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(255)))), ((int)(((byte)(202)))));
             this.tableLayoutPanel7.ColumnCount = 4;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
             this.tableLayoutPanel7.Controls.Add(this.richTextBox2, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.panel5, 2, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 479);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 471);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel7.MaximumSize = new System.Drawing.Size(0, 200);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(741, 79);
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(696, 87);
             this.tableLayoutPanel7.TabIndex = 0;
             this.tableLayoutPanel7.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel7_Paint);
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.AcceptsTab = true;
+            this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.richTextBox2.Location = new System.Drawing.Point(4, 3);
+            this.richTextBox2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.richTextBox2.MaximumSize = new System.Drawing.Size(0, 200);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.richTextBox2.Size = new System.Drawing.Size(610, 84);
+            this.richTextBox2.TabIndex = 1;
+            this.richTextBox2.Text = "";
+            this.richTextBox2.ContentsResized += new System.Windows.Forms.ContentsResizedEventHandler(this.richTextBox2_ContentsResized);
             // 
             // panel5
             // 
@@ -178,11 +193,26 @@ namespace WindowsFormsClient
             this.panel5.Controls.Add(this.send_mess_button);
             this.panel5.Controls.Add(this.send_button);
             this.panel5.Controls.Add(this.send_button_pictureBox);
-            this.panel5.Location = new System.Drawing.Point(644, 5);
+            this.panel5.Location = new System.Drawing.Point(625, 9);
             this.panel5.Margin = new System.Windows.Forms.Padding(8, 5, 0, 8);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(70, 66);
             this.panel5.TabIndex = 2;
+            // 
+            // send_mess_button
+            // 
+            this.send_mess_button.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.send_mess_button.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.send_mess_button.FlatAppearance.BorderSize = 0;
+            this.send_mess_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.send_mess_button.Image = global::WindowsFormsClient.Properties.Resources.send;
+            this.send_mess_button.Location = new System.Drawing.Point(13, 12);
+            this.send_mess_button.Name = "send_mess_button";
+            this.send_mess_button.Size = new System.Drawing.Size(45, 45);
+            this.send_mess_button.TabIndex = 2;
+            this.send_mess_button.UseVisualStyleBackColor = false;
             // 
             // send_button
             // 
@@ -210,30 +240,23 @@ namespace WindowsFormsClient
             // 
             // send_button_pictureBox
             // 
-            this.send_button_pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.send_button_pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.send_button_pictureBox.Image = global::WindowsFormsClient.Properties.Resources.send_button_back;
             this.send_button_pictureBox.Location = new System.Drawing.Point(0, 0);
-            this.send_button_pictureBox.Margin = new System.Windows.Forms.Padding(8, 3, 3, 3);
+            this.send_button_pictureBox.Margin = new System.Windows.Forms.Padding(8, 3, 3, 0);
             this.send_button_pictureBox.Name = "send_button_pictureBox";
-            this.send_button_pictureBox.Size = new System.Drawing.Size(70, 70);
-            this.send_button_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.send_button_pictureBox.Size = new System.Drawing.Size(70, 66);
+            this.send_button_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.send_button_pictureBox.TabIndex = 0;
             this.send_button_pictureBox.TabStop = false;
             // 
-            // richTextBox2
+            // panel7
             // 
-            this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.richTextBox2.Location = new System.Drawing.Point(4, 3);
-            this.richTextBox2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.richTextBox2.Size = new System.Drawing.Size(629, 76);
-            this.richTextBox2.TabIndex = 1;
-            this.richTextBox2.Text = "";
-            this.richTextBox2.ContentsResized += new System.Windows.Forms.ContentsResizedEventHandler(this.richTextBox2_ContentsResized);
-            this.richTextBox2.SizeChanged += new System.EventHandler(this.richTextBox2_SizeChanged);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel7.Location = new System.Drawing.Point(696, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(45, 558);
+            this.panel7.TabIndex = 1;
             // 
             // MessageslistBox
             // 
@@ -492,29 +515,6 @@ namespace WindowsFormsClient
             this.ContactslistBox.TabIndex = 2;
             this.ContactslistBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ContactslistBox_DrawItem);
             this.ContactslistBox.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.ContactslistBox_MeasureItem);
-            // 
-            // panel7
-            // 
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel7.Location = new System.Drawing.Point(696, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(45, 558);
-            this.panel7.TabIndex = 1;
-            // 
-            // send_mess_button
-            // 
-            this.send_mess_button.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.send_mess_button.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.send_mess_button.FlatAppearance.BorderSize = 0;
-            this.send_mess_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.send_mess_button.Image = global::WindowsFormsClient.Properties.Resources.send;
-            this.send_mess_button.Location = new System.Drawing.Point(13, 12);
-            this.send_mess_button.Name = "send_mess_button";
-            this.send_mess_button.Size = new System.Drawing.Size(45, 45);
-            this.send_mess_button.TabIndex = 2;
-            this.send_mess_button.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
