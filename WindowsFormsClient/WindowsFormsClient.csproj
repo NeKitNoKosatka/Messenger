@@ -153,6 +153,8 @@
     <Content Include="images\send.png" />
     <Content Include="images\sendbutton.png" />
     <None Include="images\send_button_back.png" />
+    <None Include="images\send_button_back_pressed.png" />
+    <None Include="images\send_button_back_mouse_down.png" />
     <Content Include="images\user.png" />
   </ItemGroup>
   <ItemGroup>
