@@ -123,6 +123,26 @@ namespace WindowsFormsClient.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap send_button_back_mouse_down {
+            get {
+                object obj = ResourceManager.GetObject("send_button_back_mouse_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap send_button_back_pressed {
+            get {
+                object obj = ResourceManager.GetObject("send_button_back_pressed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sendbutton {
             get {
                 object obj = ResourceManager.GetObject("sendbutton", resourceCulture);

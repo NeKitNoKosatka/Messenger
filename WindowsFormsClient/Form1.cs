@@ -280,33 +280,33 @@ namespace WindowsFormsClient
             //send_button.ForeColor = Color.FromArgb(20, 148, 137);
         }
 
-        private void tableLayoutPanel6_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void richTextBox2_ContentsResized(object sender, ContentsResizedEventArgs e)
         {
-            ((RichTextBox)sender).Height = e.NewRectangle.Height + 5;
-            ((RichTextBox)sender).Location = new Point(((RichTextBox)sender).Location.X, ((RichTextBox)sender).Location.Y - 16);
+            //((RichTextBox)sender).Height = e.NewRectangle.Height + 5;
+            //((RichTextBox)sender).Location = new Point(((RichTextBox)sender).Location.X, ((RichTextBox)sender).Location.Y - 16);
 
         }
 
 
-        private void tableLayoutPanel7_Paint(object sender, PaintEventArgs e)
+        private void send_mess_button_MouseEnter(object sender, EventArgs e)
         {
+            send_button_pictureBox.Image = Properties.Resources.send_button_back_pressed;
             
         }
-        
 
-        private void richTextBox2_SizeChanged(object sender, EventArgs e)
+        private void send_mess_button_MouseLeave(object sender, EventArgs e)
         {
-            //MessageslistBox.Items.Add("拐杖");
-            //MessageslistBox.Items.Remove("拐杖");
-            //Paint += new PaintEventHandler(transpTLP_Paint);
-            //MessageslistBox.Refresh();
-            //this.Refresh();
-            //transpTLP.Refresh();
+            send_button_pictureBox.Image = Properties.Resources.send_button_back;
+        }
+
+        private void send_mess_button_MouseDown(object sender, MouseEventArgs e)
+        {
+            send_button_pictureBox.Image = Properties.Resources.send_button_back_mouse_down;
+        }
+
+        private void send_mess_button_MouseUp(object sender, MouseEventArgs e)
+        {
+            send_button_pictureBox.Image = Properties.Resources.send_button_back_pressed;
         }
     }
 }
