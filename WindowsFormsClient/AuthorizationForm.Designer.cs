@@ -45,7 +45,7 @@ namespace WindowsFormsClient
             // 
             this.auth_label.AutoSize = true;
             this.auth_label.Font = new System.Drawing.Font("GOST type A", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.auth_label.ForeColor = System.Drawing.Color.SpringGreen;
+            this.auth_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(134)))), ((int)(((byte)(131)))));
             this.auth_label.Location = new System.Drawing.Point(112, 42);
             this.auth_label.Name = "auth_label";
             this.auth_label.Size = new System.Drawing.Size(233, 42);
@@ -56,18 +56,20 @@ namespace WindowsFormsClient
             // 
             // login_textBox
             // 
-            this.login_textBox.Location = new System.Drawing.Point(81, 125);
+            this.login_textBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.login_textBox.Location = new System.Drawing.Point(81, 127);
             this.login_textBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.login_textBox.Name = "login_textBox";
-            this.login_textBox.Size = new System.Drawing.Size(288, 22);
+            this.login_textBox.Size = new System.Drawing.Size(288, 15);
             this.login_textBox.TabIndex = 1;
             // 
             // password_textBox
             // 
-            this.password_textBox.Location = new System.Drawing.Point(81, 181);
+            this.password_textBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.password_textBox.Location = new System.Drawing.Point(81, 183);
             this.password_textBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.password_textBox.Name = "password_textBox";
-            this.password_textBox.Size = new System.Drawing.Size(288, 22);
+            this.password_textBox.Size = new System.Drawing.Size(288, 15);
             this.password_textBox.TabIndex = 2;
             this.password_textBox.UseSystemPasswordChar = true;
             // 
@@ -93,12 +95,14 @@ namespace WindowsFormsClient
             // 
             // password_button
             // 
+            this.password_button.BackColor = System.Drawing.Color.WhiteSmoke;
             this.password_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.password_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.password_button.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.password_button.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.password_button.FlatAppearance.BorderSize = 0;
             this.password_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.password_button.Image = ((System.Drawing.Image)(resources.GetObject("password_button.Image")));
-            this.password_button.Location = new System.Drawing.Point(373, 178);
+            this.password_button.Location = new System.Drawing.Point(375, 178);
             this.password_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.password_button.Name = "password_button";
             this.password_button.Size = new System.Drawing.Size(36, 26);
@@ -109,11 +113,11 @@ namespace WindowsFormsClient
             // enter_button
             // 
             this.enter_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.enter_button.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.enter_button.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
             this.enter_button.FlatAppearance.BorderSize = 0;
             this.enter_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.enter_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.enter_button.Font = new System.Drawing.Font("Gagalin", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.enter_button.Font = new System.Drawing.Font("HeliosBlackC", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.enter_button.Location = new System.Drawing.Point(123, 255);
             this.enter_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.enter_button.Name = "enter_button";
@@ -158,7 +162,7 @@ namespace WindowsFormsClient
             this.AcceptButton = this.enter_button;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.MintCream;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.CancelButton = this.closing_button;
             this.ClientSize = new System.Drawing.Size(436, 360);
             this.Controls.Add(this.closing_button);
@@ -178,6 +182,7 @@ namespace WindowsFormsClient
             this.Name = "AuthorizationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.AuthorizationForm_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AuthorizationForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AuthorizationForm_MouseMove);
             this.ResumeLayout(false);

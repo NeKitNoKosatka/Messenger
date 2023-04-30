@@ -145,6 +145,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="icons\logo2.ico" />
     <Content Include="icons\user.ico" />
     <Content Include="images\eye.png" />
     <Content Include="images\messagebox.png" />
