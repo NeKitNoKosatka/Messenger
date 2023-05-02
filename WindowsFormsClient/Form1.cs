@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Messenger;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,11 +9,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using MySql.Data.MySqlClient;
+
 
 namespace WindowsFormsClient
 {
     public partial class Form1 : Form
     {
+        private static int MessageID = 0;
+
+        private static string userName; //= AuthorizationForm.UserName;
+        private static MessengerClientAPI API = new MessengerClientAPI();
+        private string job_name;
+        private string phone;
+        private string mail;
+        private string contact;
+        private int ID;
+        private int contactID;
+        private int chatID = -1;
+
         public Form1()
         {
             InitializeComponent();
@@ -130,9 +145,46 @@ namespace WindowsFormsClient
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            DataBase db = new DataBase();
+
+            string query = "SELECT `job_name`, `phone`, `mail` FROM `users` WHERE `user_id` = @user_id";
+
+            MySqlCommand command = new MySqlCommand(query, db.GetConnection());
+
+            command.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = AuthorizationForm.UserID;
+            
+
+            db.OpenConnection();
+
+            MySqlDataReader reader;
+            reader = command.ExecuteReader();
+            
+            while (reader.Read())
+            {
+                job_name = reader.GetString(0);
+                phone = reader.GetString(1);
+                mail = reader.GetString(2); 
+            }
+            reader.Close();
+
+            db.CloseConnection();
+
+            userName = AuthorizationForm.UserName;
+
+            string[] name = userName.Split(' ');
+
+            name_label.Text = name[0];
+            secondname_label.Text = name[1];
+
+
+            job_label.Text = "Должность: " + job_name;
+            phone_label.Text = "Телефон: " + phone;
+            mail_label.Text = "Почта: " + mail;
+
+
             //AnimateWindow(this.Handle, 1000,
             //AnimateWindowFlags.AW_BLEND |
-            
+
             //AnimateWindowFlags.AW_CENTER);
 
         }

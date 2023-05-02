@@ -24,7 +24,7 @@ namespace WindowsFormsClient
         private string contact;
         private int ID;
         private int contactID;
-        private int chatID;
+        private int chatID = -1;
         //private AuthorizationForm authForm;
 
         public MainForm()        //AuthorizationForm f)
@@ -97,8 +97,33 @@ namespace WindowsFormsClient
 
         private void TimerProcessor(Object myObject, EventArgs myEventArgs)
         {
-            Messenger.Message msg = new Messenger.Message("system", "", DateTime.UtcNow, 0, 0, 0);
+            Messenger.Message msg = new Messenger.Message("system", "", DateTime.UtcNow, 0, 0, -1);
             
+            bool connect_flag_2 = false;
+
+            do
+            {
+                try
+                {
+                    API.GetMessage(0);
+                    connect_flag_2 = true;
+                }
+                catch (System.Net.WebException)
+                {
+                    timer1.Stop();
+                    var result = MessageBox.Show("Обратитесь к администратору", "Не удалось подключиться к серверу", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+
+                    if (result == DialogResult.Cancel)
+                    {
+                        Application.Exit();
+                        return;
+                    }
+
+                }
+            } while (!connect_flag_2);
+
+            timer1.Start();
+
             if (MessageID == 5)
             {
                 API.SendMessage(msg);
@@ -193,7 +218,7 @@ namespace WindowsFormsClient
 
                 timer1.Stop();
 
-           
+              
                 timer1.Tick += new EventHandler(TimerProcessor);
 
                 timer1.Interval = 1; //интервал таймера, запрашивающего новые сообщения у сервера
@@ -211,12 +236,32 @@ namespace WindowsFormsClient
         private void send_button_Click(object sender, EventArgs e)
         {
             string Message = MessagesrichTB.Text;
-            
-            if (userName != null)
+
+
+            bool connect_flag = false;
+
+            do
             {
-                Messenger.Message msg = new Messenger.Message(userName, Message, DateTime.Now, AuthorizationForm.UserID, Convert.ToInt32(contactID), chatID); //edit 2(chatID)
-                API.SendMessage(msg);
-            }
+                try
+                {
+                    Messenger.Message msg = new Messenger.Message(userName, Message, DateTime.Now, AuthorizationForm.UserID, Convert.ToInt32(contactID), chatID); //edit 2(chatID)
+                    API.SendMessage(msg);
+                    connect_flag = true;
+                }
+                catch (System.Net.WebException)
+                {
+                    var result = MessageBox.Show("Обратитесь к администратору", "Не удалось подключиться к серверу", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+
+                    if (result == DialogResult.Cancel)
+                    {
+                        Application.Exit();
+                        return;
+                    }
+
+                }
+            } while (!connect_flag);
+
+
             MessagesrichTB.Text = "";
         }
 

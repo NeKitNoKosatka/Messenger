@@ -99,7 +99,7 @@ namespace ASPCoreServer.Controllers
                 //return new OkResult();
             }
 
-            if (msg.UserID == 0)
+            if (msg.UserID == 0 || msg.ChatID == -1)
                 return new OkResult();
             else
             {
