@@ -8,13 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Windows.Forms;
+
+
 
 namespace WindowsFormsClient
 {
     class DataBase
     {
+        public bool connect_flag = false;
+
         //public static string connectString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\DB.mdb";
-        public static string connectString = "server=localhost;port=8889;user=root;password=root;database=db"; // строка для обеспечения соединения к базе данных
+        private static string connectString = "server=localhost;port=8889;user=root;password=root;database=db"; // строка для обеспечения соединения к базе данных
 
         //OleDbConnection connection = new OleDbConnection(connectString);
         MySqlConnection connection = new MySqlConnection(connectString); // создание соединения с базой данных
@@ -22,9 +27,24 @@ namespace WindowsFormsClient
         // метод для открытия соединения с базой данных
         public void OpenConnection() 
         {
-            if (connection.State == System.Data.ConnectionState.Closed)
-                connection.Open();
-            
+            try
+            {
+                if (connection.State == System.Data.ConnectionState.Closed)
+                    connection.Open();
+                connect_flag = true;
+
+            }
+            catch (MySqlException)
+            {
+                var result = MessageBox.Show("Обратитесь к администратору", "Не удалось подключиться к серверу", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+
+                if (result == DialogResult.Cancel)
+                {
+                    Application.Exit();
+                    return;
+                }
+
+            }
         }
 
         // метод для закрытия соединения с базой данных

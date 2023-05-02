@@ -74,27 +74,30 @@ namespace WindowsFormsClient
             command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
             //command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
 
-            bool connect_flag = false;
+            
 
             do
             {
-                try
-                {
-                    db.OpenConnection();
-                    connect_flag = true;
-                }
-                catch (MySqlException)
-                {
-                    var result = MessageBox.Show("Обратитесь к администратору", "Не удалось подключиться к серверу", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
-                    
-                    if (result == DialogResult.Cancel)
-                    {
-                        Application.Exit();
-                        return;
-                    }
-                                        
-                }
-            } while (!connect_flag);
+
+                db.OpenConnection();
+                //db.connect_flag = true;
+                //try
+                //{
+                //    db.OpenConnection();
+                //    connect_flag = true;
+                //}
+                //catch (MySqlException)
+                //{
+                //    var result = MessageBox.Show("Обратитесь к администратору", "Не удалось подключиться к серверу", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+
+                //    if (result == DialogResult.Cancel)
+                //    {
+                //        Application.Exit();
+                //        return;
+                //    }
+
+                //}
+            } while (!db.connect_flag);
 
 
 
@@ -110,8 +113,8 @@ namespace WindowsFormsClient
                 
                 UserID = reader.GetInt32(0);
                 
-                key_e = reader.GetInt32(5);
-                key_n = reader.GetInt32(6);
+                key_e = reader.GetInt32(8);
+                key_n = reader.GetInt32(9);
                 //Console.WriteLine(reader.GetString(2) + ", " + reader.GetInt32(5) + ", " + reader.GetInt32(6));
             }
      

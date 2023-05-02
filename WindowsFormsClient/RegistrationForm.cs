@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
+
 
 namespace WindowsFormsClient
 {
@@ -104,37 +106,42 @@ namespace WindowsFormsClient
 
             if (userFirstName_textBox.Text == "Введите имя")
             {
-                MessageBox.Show("Введите имя");
+                MessageBox.Show("Введите имя", "Некорректный ввод", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (intNameCatcher != 0)
             {                
-                MessageBox.Show("Некорректное имя: имя содержит цифры");
+                MessageBox.Show("Некорректное имя: имя содержит цифры", "Некорректный ввод", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             
             if (userSecondName_textBox.Text == "Введите фамилию")
             {
-                MessageBox.Show("Введите фамилию");
+                MessageBox.Show("Введите фамилию", "Некорректный ввод", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (intSecNameCatcher != 0)
             {
-                MessageBox.Show("Некорректная Фамилия: фамилия содержит цифры");
+                MessageBox.Show("Некорректная фамилия: фамилия содержит цифры", "Некорректный ввод", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (login_textBox.Text == "")
+            if (login_textBox.Text == "Введите логин")
             {
-                MessageBox.Show("Введите логин");
+                MessageBox.Show("Введите логин", "Некорректный ввод", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             
-            if (password_textBox.Text == "")
+            if (password_textBox.Text == "Введите пароль")
             {
-                MessageBox.Show("Введите пароль");
+                MessageBox.Show("Введите пароль", "Некорректный ввод", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (password_textBox.Text.Length < 8)
+            {
+                MessageBox.Show("Слишком короткий пароль. Длина пароля должна быть не менее 8 символов", "Некорректный ввод", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else
@@ -146,7 +153,7 @@ namespace WindowsFormsClient
                     //Console.WriteLine(characters.IndexOf(password_textBox.Text[i]));
                     if (characters.IndexOf(password_textBox.Text[i]) == -1)
                     {
-                        MessageBox.Show("Неккоректный символ в пароле: " + password_textBox.Text[i]);
+                        MessageBox.Show("Неккоректный символ в пароле: " + password_textBox.Text[i], "Некорректный ввод", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }           
                 }
@@ -223,7 +230,7 @@ namespace WindowsFormsClient
             db.OpenConnection();
 
             if (command.ExecuteNonQuery() == 1)
-            {   
+            {
                 //MySqlDataReader reader;
                 //reader = command_for_user_id.ExecuteReader();
 
@@ -243,11 +250,11 @@ namespace WindowsFormsClient
                 //command_for_add_new_columns.ExecuteNonQuery();
                 //command_for_add_new_rows.ExecuteNonQuery();
 
-                MessageBox.Show("Аккаунт создан");
+                MessageBox.Show("Приятного пользования!", "Аккаунт создан", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
                 
             else
-                MessageBox.Show("Аккаунт не был создан");
+                MessageBox.Show("Произошла какая-то ошибка. Попробуйте снова или обратитесь к администратору.", "Аккаунт не был создан", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             db.CloseConnection();
 
@@ -277,7 +284,30 @@ namespace WindowsFormsClient
 
 
             adapter.SelectCommand = command;
-            adapter.Fill(table);
+
+            bool connect_flag = false;
+
+            do
+            {
+                try
+                {
+                    adapter.Fill(table);
+                    connect_flag = true;
+                }
+                catch (MySqlException)
+                {
+                    var result = MessageBox.Show("Обратитесь к администратору", "Не удалось подключиться к серверу", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+
+                    if (result == DialogResult.Cancel)
+                    {
+                        Application.Exit();
+                        return true;
+                    }
+
+                }
+            } while (!connect_flag);
+
+            
 
             if (table.Rows.Count > 0)
             {
@@ -376,6 +406,26 @@ namespace WindowsFormsClient
                 password_textBox.Text = "Введите пароль";
                 password_textBox.ForeColor = Color.Gray;
             }
+        }
+
+        private void RegistrationForm_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = this.CreateGraphics();
+            Pen pen = new Pen(Brushes.White, 4);
+            pen.LineJoin = LineJoin.Bevel;//задаем скошенные углы
+            pen.MiterLimit = 4;//задаем ограничение толщины скошенных углов
+            g.DrawRectangle(pen, new Rectangle(userFirstName_textBox.Location.X - 1, userFirstName_textBox.Location.Y - 1, userFirstName_textBox.Width + 3, userFirstName_textBox.Height + 3));
+            g.DrawRectangle(pen, new Rectangle(userSecondName_textBox.Location.X - 1, userSecondName_textBox.Location.Y - 1, userSecondName_textBox.Width + 3, userSecondName_textBox.Height + 3));
+            g.DrawRectangle(pen, new Rectangle(login_textBox.Location.X - 1, login_textBox.Location.Y - 1, login_textBox.Width + 3, login_textBox.Height + 3));
+            g.DrawRectangle(pen, new Rectangle(password_textBox.Location.X - 1, password_textBox.Location.Y - 1, password_textBox.Width + 3, password_textBox.Height + 3));
+
+            g.DrawRectangle(pen, new Rectangle(job_comboBox.Location.X - 1, job_comboBox.Location.Y - 1, job_comboBox.Width + 3, job_comboBox.Height + 3));
+
+            g.DrawRectangle(pen, new Rectangle(phone_textBox.Location.X - 1, phone_textBox.Location.Y - 1, phone_textBox.Width + 3, phone_textBox.Height + 3));
+            g.DrawRectangle(pen, new Rectangle(mail_textBox.Location.X - 1, mail_textBox.Location.Y - 1, mail_textBox.Width + 3, mail_textBox.Height + 3));
+
+            //рисуем прямоугольник с параметрами испоьзуемыми выше            
+            // ex Hermein
         }
     }
 }
