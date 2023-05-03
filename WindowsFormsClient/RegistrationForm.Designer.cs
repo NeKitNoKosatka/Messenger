@@ -63,7 +63,7 @@ namespace WindowsFormsClient
             this.enter_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.enter_button.Name = "enter_button";
             this.enter_button.Size = new System.Drawing.Size(203, 45);
-            this.enter_button.TabIndex = 7;
+            this.enter_button.TabIndex = 9;
             this.enter_button.Text = "ПРИНЯТЬ";
             this.enter_button.UseVisualStyleBackColor = true;
             this.enter_button.Click += new System.EventHandler(this.enter_button_Click);
@@ -80,7 +80,7 @@ namespace WindowsFormsClient
             this.password_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.password_button.Name = "password_button";
             this.password_button.Size = new System.Drawing.Size(36, 26);
-            this.password_button.TabIndex = 6;
+            this.password_button.TabIndex = 19;
             this.password_button.UseVisualStyleBackColor = false;
             this.password_button.Click += new System.EventHandler(this.password_button_Click);
             // 
@@ -210,7 +210,7 @@ namespace WindowsFormsClient
             this.register_link.Location = new System.Drawing.Point(130, 612);
             this.register_link.Name = "register_link";
             this.register_link.Size = new System.Drawing.Size(171, 17);
-            this.register_link.TabIndex = 8;
+            this.register_link.TabIndex = 11;
             this.register_link.TabStop = true;
             this.register_link.Text = "У меня уже есть аккаунт";
             this.register_link.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.register_link_LinkClicked);
@@ -229,7 +229,9 @@ namespace WindowsFormsClient
             this.job_comboBox.Location = new System.Drawing.Point(72, 382);
             this.job_comboBox.Name = "job_comboBox";
             this.job_comboBox.Size = new System.Drawing.Size(288, 24);
-            this.job_comboBox.TabIndex = 19;
+            this.job_comboBox.TabIndex = 6;
+            this.job_comboBox.Enter += new System.EventHandler(this.job_comboBox_Enter);
+            this.job_comboBox.Leave += new System.EventHandler(this.job_comboBox_Leave);
             // 
             // label5
             // 
@@ -261,7 +263,9 @@ namespace WindowsFormsClient
             this.phone_textBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.phone_textBox.Name = "phone_textBox";
             this.phone_textBox.Size = new System.Drawing.Size(288, 15);
-            this.phone_textBox.TabIndex = 21;
+            this.phone_textBox.TabIndex = 7;
+            this.phone_textBox.Enter += new System.EventHandler(this.phone_textBox_Enter);
+            this.phone_textBox.Leave += new System.EventHandler(this.phone_textBox_Leave);
             // 
             // label7
             // 
@@ -280,7 +284,9 @@ namespace WindowsFormsClient
             this.mail_textBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mail_textBox.Name = "mail_textBox";
             this.mail_textBox.Size = new System.Drawing.Size(288, 15);
-            this.mail_textBox.TabIndex = 23;
+            this.mail_textBox.TabIndex = 8;
+            this.mail_textBox.Enter += new System.EventHandler(this.mail_textBox_Enter);
+            this.mail_textBox.Leave += new System.EventHandler(this.mail_textBox_Leave);
             // 
             // RegistrationForm
             // 

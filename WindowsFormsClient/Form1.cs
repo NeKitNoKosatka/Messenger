@@ -27,121 +27,71 @@ namespace WindowsFormsClient
         private int ID;
         private int contactID;
         private int chatID = -1;
+        private int msg_count;
 
         public Form1()
         {
             InitializeComponent();
-
-            //transpTLP.Location = new Point(0, 0);
-            ////transpTLP.Parent = MessageslistBox;
-            //transpTLP.Dock = DockStyle.Bottom;
-            ////transpTLP.Anchor = AnchorStyles.Bottom;
-            //transpTLP.AutoSize = true;
-            //transpTLP.MaximumSize = new Size(0, 100);
-
-            //transpTLP.ColumnStyles.Add(new ColumnStyle());
-            //transpTLP.ColumnStyles.Add(new ColumnStyle());
-            //transpTLP.Controls.Add(richTextBox2);
-
-            
-
-
-
-            //Paint += new PaintEventHandler(info_panel_Paint);//перерисовываем messageBox
-
-            //tableLayoutPanel7.BackColor = Color.Red;
-            //this.TransparencyKey = Color.Red;
-
-            //Paint += new PaintEventHandler(info_panel_Paint);//перерисовываем infoPanel
+                        
         }
 
-        //public class TranspTLP : TableLayoutPanel           //ExtendedPanel : Panel
-        //{
-        //    private const int WS_EX_TRANSPARENT = 0x20;
-        //    public TranspTLP()
-        //    {
-        //        SetStyle(ControlStyles.Opaque, true);
-        //    }
-
-        //    private int opacity = 0;
-        //    [DefaultValue(50)]
-        //    public int Opacity
-        //    {
-        //        get
-        //        {
-        //            return this.opacity;
-        //        }
-        //        set
-        //        {
-        //            if (value < 0 || value > 100)
-        //                throw new ArgumentException("value must be between 0 and 100");
-        //            this.opacity = value;
-        //        }
-        //    }
-        //    protected override CreateParams CreateParams
-        //    {
-        //        get
-        //        {
-        //            CreateParams cp = base.CreateParams;
-        //            cp.ExStyle = cp.ExStyle | WS_EX_TRANSPARENT;
-        //            return cp;
-        //        }
-        //    }
-        //    protected override void OnPaint(PaintEventArgs e)
-        //    {
-        //        using (var brush = new SolidBrush(Color.FromArgb(this.opacity * 255 / 100, Color.Black)))  //this.BackColor
-        //        {
-        //            e.Graphics.FillRectangle(brush, this.ClientRectangle);
-        //        }                
-        //        base.OnPaint(e);
-        //    }
-
-
-        //}
+        
 
 
 
-        //class TranspTLP : TableLayoutPanel
+        
 
-        //{
+        private void TimerProcessor(Object myObject, EventArgs myEventArgs)
+        {
+            Messenger.Message msg = new Messenger.Message("system", "", DateTime.UtcNow, 0, 0, -1);
 
-        //    protected override CreateParams CreateParams
+            bool connect_flag_2 = false;
 
-        //    {
+            do
+            {
+                try
+                {
+                    API.GetMessage(0);
+                    connect_flag_2 = true;
+                }
+                catch (System.Net.WebException)
+                {
+                    timer1.Stop();
+                    var result = MessageBox.Show("Обратитесь к администратору", "Не удалось подключиться к серверу", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
 
-        //        get
+                    if (result == DialogResult.Cancel)
+                    {
+                        Application.Exit();
+                        return;
+                    }
 
-        //        {
+                }
+            } while (!connect_flag_2);
 
-        //            CreateParams cp = base.CreateParams;
+            timer1.Start();
 
-        //            cp.ExStyle |= 0x00000020; //This returns the transparent (no background painting) mode
+            if (MessageID == 5)
+            {
+                API.SendMessage(msg);
+                MessageID = 0;
+                return;
+            }
+            else
+            {
+                msg = API.GetMessage(MessageID);
+            }
 
-        //            return cp;
-
-        //        }
-
-        //    }
-
-        //}
-
-        //[Flags]
-        //enum AnimateWindowFlags
-        //{
-        //    AW_HOR_POSITIVE = 0x00000001,
-        //    AW_HOR_NEGATIVE = 0x00000002,
-        //    AW_VER_POSITIVE = 0x00000004,
-        //    AW_VER_NEGATIVE = 0x00000008,
-        //    AW_CENTER = 0x00000010,
-        //    AW_HIDE = 0x00010000,
-        //    AW_ACTIVATE = 0x00020000,
-        //    AW_SLIDE = 0x00040000,
-        //    AW_BLEND = 0x00080000
-        //}
-        //[System.Runtime.InteropServices.DllImport("user32.dll")]
-        //static extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flags);
-
-
+            if (msg != null && ((msg.UserID == AuthorizationForm.UserID && msg.ReceiverID == Convert.ToInt32(contactID)) || (msg.UserID == Convert.ToInt32(contactID) && msg.ReceiverID == AuthorizationForm.UserID)))
+            {
+                MessageslistBox.Items.Add(msg);
+                MessageID++;
+                //msg = API.GetMessage(MessageID);    
+            }
+            else if (msg != null)
+            {
+                MessageID++;
+            }
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -154,7 +104,10 @@ namespace WindowsFormsClient
             command.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = AuthorizationForm.UserID;
             
 
-            db.OpenConnection();
+            do
+            {
+                db.OpenConnection();
+            } while (!db.connect_flag);
 
             MySqlDataReader reader;
             reader = command.ExecuteReader();
@@ -167,7 +120,10 @@ namespace WindowsFormsClient
             }
             reader.Close();
 
-            db.CloseConnection();
+            do
+            {
+                db.CloseConnection();
+            } while (!db.connect_flag);
 
             userName = AuthorizationForm.UserName;
 
@@ -180,12 +136,35 @@ namespace WindowsFormsClient
             job_label.Text = "Должность: " + job_name;
             phone_label.Text = "Телефон: " + phone;
             mail_label.Text = "Почта: " + mail;
+            mess_count_label.Text = "";
 
 
-            //AnimateWindow(this.Handle, 1000,
-            //AnimateWindowFlags.AW_BLEND |
 
-            //AnimateWindowFlags.AW_CENTER);
+            string query_2 = $"SELECT users.user_id, users.first_name, users.second_name FROM users JOIN chat ON users.user_id = chat.user_1 AND chat.user_2 = {AuthorizationForm.UserID} UNION SELECT users.user_id, users.first_name, users.second_name FROM users JOIN chat ON users.user_id = chat.user_2 AND chat.user_1 = {AuthorizationForm.UserID};";
+
+            MySqlCommand command_2 = new MySqlCommand(query_2, db.GetConnection());
+
+            do
+            {
+                db.OpenConnection();
+            } while (!db.connect_flag);
+
+            
+            reader = command_2.ExecuteReader();
+
+            while (reader.Read())
+            {
+                ID = reader.GetInt32(0);
+                contact = reader.GetString(1) + " " + reader.GetString(2);
+                ContactslistBox.Items.Add($"{contact} (id:{ID})");
+            }
+
+            reader.Close();
+            do
+            {
+                db.CloseConnection();
+            } while (!db.connect_flag);
+
 
         }
 
@@ -207,13 +186,8 @@ namespace WindowsFormsClient
 
         private void new_contact_button_Click(object sender, EventArgs e)
         {
-            ContactslistBox.Items.Add("    " + "Name SecondName");
-            MessageslistBox.Items.Add("очень длинное сообщенеие, которое не поместится в боксе, оно, правда, очень длинное, и места под него совсем нет. В этом можно не сомневаться. и ещё раз.очень длинное сообщенеие, которое не поместится в боксе, оно, правда, очень длинное, и места под него совсем нет. В этом можно не сомневаться");
-            MessageslistBox.Items.Add("system");
-            MessageslistBox.Items.Add(" ");
-
-
-            //MessageslistBox.Update();
+            ContactsListForm contactsListForm = new ContactsListForm(this);
+            contactsListForm.Show();
         }
 
         protected override void OnSizeChanged(EventArgs e)
@@ -360,6 +334,173 @@ namespace WindowsFormsClient
         private void send_mess_button_MouseUp(object sender, MouseEventArgs e)
         {
             send_button_pictureBox.Image = Properties.Resources.send_button_back_pressed;
+        }
+        public void update_ContactslistBox()
+        {
+            ContactslistBox.Items.Clear();
+            DataBase db = new DataBase();
+
+            string query = $"SELECT users.user_id, users.first_name, users.second_name FROM users JOIN chat ON users.user_id = chat.user_1 AND chat.user_2 = {AuthorizationForm.UserID} UNION SELECT users.user_id, users.first_name, users.second_name FROM users JOIN chat ON users.user_id = chat.user_2 AND chat.user_1 = {AuthorizationForm.UserID};";
+
+            MySqlCommand command = new MySqlCommand(query, db.GetConnection());
+
+            do
+            {
+                db.OpenConnection();
+            } while (!db.connect_flag);
+
+            MySqlDataReader reader;
+            reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                ID = reader.GetInt32(0);
+                contact = reader.GetString(1) + " " + reader.GetString(2);
+                ContactslistBox.Items.Add($"{contact} (id:{ID})");
+            }
+
+            reader.Close();
+            do
+            {
+                db.CloseConnection();
+            } while (!db.connect_flag);
+        }
+
+        private void ContactslistBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageslistBox.Items.Clear();
+            msg_count = 0;
+
+            string selected_contact = (string)ContactslistBox.SelectedItem;
+            if (selected_contact != null)
+            {
+                //contactID = selected_contact.Substring(selected_contact.Length - 3).Substring(0, 2);
+
+                int.TryParse(string.Join("", selected_contact.Where(c => char.IsDigit(c))), out contactID);
+
+                DataBase db = new DataBase();
+
+                string query = "SELECT chat_id FROM chat WHERE (user_1 = @user_1 AND user_2 = @user_2) OR (user_1 = @user_2 AND user_2 = @user_1);";
+
+                MySqlCommand command = new MySqlCommand(query, db.GetConnection());
+
+                command.Parameters.Add("@user_1", MySqlDbType.VarChar).Value = AuthorizationForm.UserID;
+                command.Parameters.Add("@user_2", MySqlDbType.VarChar).Value = contactID;
+
+                do
+                {
+                    db.OpenConnection();
+                } while (!db.connect_flag);
+
+                MySqlDataReader reader;
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    chatID = reader.GetInt32(0);
+                }
+
+                reader.Close();
+
+                string query_old_messages = "SELECT users.user_id, users.first_name, users.second_name, s.chat_id, s.content, s.send_date FROM(SELECT message.chat_id, message.sender_id, content.content, message.send_date FROM content JOIN message ON content.content_id = message.content_id WHERE message.chat_id = @chat_id) s JOIN users ON users.user_id = s.sender_id;";
+
+                MySqlCommand command_old_messages = new MySqlCommand(query_old_messages, db.GetConnection());
+
+                command_old_messages.Parameters.Add("@chat_id", MySqlDbType.VarChar).Value = chatID;
+
+                string query_info = "SELECT `job_name`, `phone`, `mail` FROM `users` WHERE `user_id` = @user_id";
+
+                MySqlCommand command_info = new MySqlCommand(query_info, db.GetConnection());
+
+                command_info.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = AuthorizationForm.UserID;
+
+                reader = command_old_messages.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    userName = reader.GetString(1) + " " + reader.GetString(2);
+                    Messenger.Message msg_old = new Messenger.Message(userName, reader.GetString(4), reader.GetDateTime(5), reader.GetInt32(0), 0, chatID);
+                    MessageslistBox.Items.Add(msg_old);
+
+                    msg_count += 1;
+
+                    //Console.WriteLine("msg from db:" + msg_old);
+                }
+
+                reader.Close();
+
+                reader = command_info.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    job_name = reader.GetString(0);
+                    phone = reader.GetString(1);
+                    mail = reader.GetString(2);
+                }
+                reader.Close();
+
+
+                do
+                {
+                    db.CloseConnection();
+                } while (!db.connect_flag);
+
+                string[] name = contact.Split(' ');
+
+                name_label.Text = name[0];
+                secondname_label.Text = name[1];
+                job_label.Text = "Должность: " + job_name;
+                phone_label.Text = "Телефон: " + phone;
+                mail_label.Text = "Почта: " + mail;
+                mess_count_label.Text = "Всего сообщений: " + msg_count.ToString();
+
+                MessageID = 0;
+
+                timer1.Stop();
+
+
+                timer1.Tick += new EventHandler(TimerProcessor);
+
+                timer1.Interval = 1000; //интервал таймера, запрашивающего новые сообщения у сервера
+                timer1.Start();
+            }
+            else
+            {
+                MessageID = 0;
+                return;
+            }
+        }
+
+        private void send_button_Click(object sender, EventArgs e)
+        {
+            string Message = MessagesrichTB.Text;
+            userName = AuthorizationForm.UserName;
+
+            bool connect_flag = false;
+
+            do
+            {
+                try
+                {
+                    Messenger.Message msg = new Messenger.Message(userName, Message, DateTime.Now, AuthorizationForm.UserID, Convert.ToInt32(contactID), chatID); //edit 2(chatID)
+                    API.SendMessage(msg);
+                    connect_flag = true;
+                }
+                catch (System.Net.WebException)
+                {
+                    var result = MessageBox.Show("Обратитесь к администратору", "Не удалось подключиться к серверу", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+
+                    if (result == DialogResult.Cancel)
+                    {
+                        Application.Exit();
+                        return;
+                    }
+
+                }
+            } while (!connect_flag);
+
+
+            MessagesrichTB.Text = "";
         }
     }
 }
