@@ -225,7 +225,14 @@ namespace WindowsFormsClient
             "Технический директор",
             "Главный бухгалтер",
             "Секретарь",
-            "Программист"});
+            "Программист",
+            "Тестировщик",
+            "Работник цеха",
+            "Работник склада",
+            "Водитель",
+            "Логист",
+            "Химик-исследователь",
+            "Селекционист"});
             this.job_comboBox.Location = new System.Drawing.Point(72, 382);
             this.job_comboBox.Name = "job_comboBox";
             this.job_comboBox.Size = new System.Drawing.Size(288, 24);
