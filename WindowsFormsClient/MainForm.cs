@@ -155,10 +155,7 @@ namespace WindowsFormsClient
             else if (msg != null)
             {
                 MessageID++;
-            }
-            
-            
-
+            }    
         }
 
         private void ContactslistBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -181,7 +178,10 @@ namespace WindowsFormsClient
                 command.Parameters.Add("@user_1", MySqlDbType.VarChar).Value = AuthorizationForm.UserID;
                 command.Parameters.Add("@user_2", MySqlDbType.VarChar).Value = contactID;
                          
-                db.OpenConnection();
+                do
+                {
+                    db.OpenConnection();
+                } while (!db.connect_flag);
 
                 MySqlDataReader reader;
                 reader = command.ExecuteReader();
@@ -212,7 +212,10 @@ namespace WindowsFormsClient
 
 
                 reader.Close();
-                db.CloseConnection();
+                do
+                {
+                    db.CloseConnection();
+                } while (!db.connect_flag);
 
                 MessageID = 0;
 
@@ -278,7 +281,10 @@ namespace WindowsFormsClient
 
             MySqlCommand command = new MySqlCommand(query, db.GetConnection());
 
-            db.OpenConnection();
+            do
+            {
+                db.OpenConnection();
+            } while (!db.connect_flag);
 
             MySqlDataReader reader;
             reader = command.ExecuteReader();
@@ -291,14 +297,17 @@ namespace WindowsFormsClient
             }
 
             reader.Close();
-            db.CloseConnection();
+            do
+            {
+                db.CloseConnection();
+            } while (!db.connect_flag);
 
         }
 
         private void new_contact_button_Click(object sender, EventArgs e)
         {
-            ContactsListForm contactsListForm = new ContactsListForm(this);
-            contactsListForm.Show();
+            //ContactsListForm contactsListForm = new ContactsListForm(this);
+            //contactsListForm.Show();
         }
 
 
@@ -312,7 +321,10 @@ namespace WindowsFormsClient
 
             MySqlCommand command = new MySqlCommand(query, db.GetConnection());
 
-            db.OpenConnection();
+            do
+            {
+                db.OpenConnection();
+            } while (!db.connect_flag);
 
             MySqlDataReader reader;
             reader = command.ExecuteReader();
@@ -325,7 +337,10 @@ namespace WindowsFormsClient
             }
 
             reader.Close();
-            db.CloseConnection();
+            do
+            {
+                db.CloseConnection();
+            } while (!db.connect_flag);
         }
     }
 }

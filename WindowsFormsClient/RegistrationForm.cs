@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.Text.RegularExpressions;
+
 
 
 namespace WindowsFormsClient
@@ -20,6 +22,8 @@ namespace WindowsFormsClient
         static readonly Protection gen = new Protection();
         //private int UserID;
         private int intNameCatcher;
+        private int PhoneLength { get; set; }
+        
         private int intSecNameCatcher;
 
         private readonly string characters = "1234567890!@#$%^&*()_+-=\\№;:?/.,''<>|{}[]\"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯйцуке`нгшщзхъфывапролджэячсмитьбю ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -44,6 +48,15 @@ namespace WindowsFormsClient
             password_textBox.Text = "Введите пароль";
             password_textBox.ForeColor = Color.Gray;
             password_textBox.UseSystemPasswordChar = false;
+
+            job_comboBox.Text = "Введите должность";
+            job_comboBox.ForeColor = Color.Gray;
+
+            phone_textBox.Text = "Введите номер телефона";
+            phone_textBox.ForeColor = Color.Gray;
+
+            mail_textBox.Text = "Введите почту";
+            mail_textBox.ForeColor = Color.Gray;
         }
 
         private void userFirstName_textBox_Enter(object sender, EventArgs e)
@@ -159,12 +172,60 @@ namespace WindowsFormsClient
                 }
             }
 
+            if (job_comboBox.Text == "Введите должность")
+            {
+                MessageBox.Show("Введите свою должность", "Некорректный ввод", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!job_comboBox.Items.Contains(job_comboBox.Text))
+            {
+                MessageBox.Show("Такой должности не существует", "Некорректный ввод", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            if (phone_textBox.Text == "Введите номер телефона")
+            {
+                MessageBox.Show("Введите свой номер телефона", "Некорректный ввод", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (phone_textBox.Text.Length < 11)
+            {
+                MessageBox.Show("Номер телефона слишком короткий", "Некорректный ввод", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else 
+            {                                 
+                if (phone_textBox.Text.Any(c => char.IsLetter(c)))
+                {
+                    MessageBox.Show("В номере телефона присутствует буква", "Некорректный ввод", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }                
+            }
+
+
+
+            if (mail_textBox.Text == "Введите почту")
+            {
+                MessageBox.Show("Введите свою почту", "Некорректный ввод", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!ismailValid(mail_textBox.Text))
+            {
+                MessageBox.Show("Проверьте правильность почтового адреса", "Некорректный ввод", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
             if (isUserExists())
                 return;
 
             DataBase db = new DataBase();
 
-            string query = "INSERT INTO `users` (`login`, `password`, `first_name`, `second_name`, `key_e`, `key_n`) VALUES (@login, @password, @name, @surname, @key_e, @key_n)";
+            string query = "INSERT INTO `users` (`login`, `password`, `first_name`, `second_name`, `job_name`, `phone`, `mail`, `key_e`, `key_n`) VALUES (@login, @password, @name, @surname, @job, @phone, @mail, @key_e, @key_n)";
             //OleDbCommand command = new OleDbCommand(query, db.GetConnection());
 
             MySqlCommand command = new MySqlCommand(query, db.GetConnection());
@@ -183,6 +244,9 @@ namespace WindowsFormsClient
             command.Parameters.Add("@password", MySqlDbType.VarChar).Value = password;
             command.Parameters.Add("@name", MySqlDbType.VarChar).Value = userFirstName_textBox.Text;
             command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = userSecondName_textBox.Text;
+            command.Parameters.Add("@job", MySqlDbType.VarChar).Value = job_comboBox.Text;
+            command.Parameters.Add("@phone", MySqlDbType.VarChar).Value = PhoneMask(phone_textBox.Text);
+            command.Parameters.Add("@mail", MySqlDbType.VarChar).Value = mail_textBox.Text;
             command.Parameters.Add("@key_e", MySqlDbType.VarChar).Value = Key_e.ToString();
             command.Parameters.Add("@key_n", MySqlDbType.VarChar).Value = Key_n.ToString();
 
@@ -227,7 +291,10 @@ namespace WindowsFormsClient
 
             command_for_user_id.Parameters.Add("@uL", MySqlDbType.VarChar).Value = login_textBox.Text;
 
-            db.OpenConnection();
+            do
+            {
+                db.OpenConnection();
+            } while (!db.connect_flag);
 
             if (command.ExecuteNonQuery() == 1)
             {
@@ -256,7 +323,12 @@ namespace WindowsFormsClient
             else
                 MessageBox.Show("Произошла какая-то ошибка. Попробуйте снова или обратитесь к администратору.", "Аккаунт не был создан", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            db.CloseConnection();
+
+
+            do
+            {
+                db.CloseConnection();
+            } while (!db.connect_flag);
 
             this.Hide();
             //this.Close();
@@ -427,5 +499,86 @@ namespace WindowsFormsClient
             //рисуем прямоугольник с параметрами испоьзуемыми выше            
             // ex Hermein
         }
+
+
+        private void job_comboBox_Enter(object sender, EventArgs e)
+        {
+            if (job_comboBox.Text == "Введите должность")
+            {
+                job_comboBox.Text = "";
+                job_comboBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void job_comboBox_Leave(object sender, EventArgs e)
+        {
+            if (job_comboBox.Text == "")
+            {
+                job_comboBox.Text = "Введите должность";
+                job_comboBox.ForeColor = Color.Gray;
+            }
+        }
+
+        private void phone_textBox_Enter(object sender, EventArgs e)
+        {
+            if (phone_textBox.Text == "Введите номер телефона")
+            {
+                phone_textBox.Text = "";
+                phone_textBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void phone_textBox_Leave(object sender, EventArgs e)
+        {
+            if (phone_textBox.Text == "")
+            {
+                phone_textBox.Text = "Введите номер телефона";
+                phone_textBox.ForeColor = Color.Gray;
+            }
+        }
+
+        private void mail_textBox_Enter(object sender, EventArgs e)
+        {
+            if (mail_textBox.Text == "Введите почту")
+            {
+                mail_textBox.Text = "";
+                mail_textBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void mail_textBox_Leave(object sender, EventArgs e)
+        {
+            if (mail_textBox.Text == "")
+            {
+                mail_textBox.Text = "Введите почту";
+                mail_textBox.ForeColor = Color.Gray;
+            }
+        }
+
+        
+        private string PhoneMask(string Phone)
+        {
+            var newVal = Regex.Replace(Phone, @"[^0-9]", "");
+            if (PhoneLength != newVal.Length && !string.IsNullOrEmpty(newVal))
+            {
+                PhoneLength = newVal.Length;
+                Phone = string.Empty;
+                
+                    if (newVal.Length > 9)
+                    {
+
+                        Phone = Regex.Replace(newVal, @"(\d{1})(\d{3})(\d{0,3})(\d{0,2})(\d{0,2})", "8 ($2) $3-$4-$5");
+                    }                                    
+            }
+            return Phone;
+        }
+
+        bool ismailValid(string email)
+        {
+            string pattern = "[.\\-_a-z0-9]+@([a-z0-9][\\-a-z0-9]+\\.)+[a-z]{2,6}";
+            Match isMatch = Regex.Match(email, pattern, RegexOptions.IgnoreCase);
+            return isMatch.Success;
+        }
+
     }
 }

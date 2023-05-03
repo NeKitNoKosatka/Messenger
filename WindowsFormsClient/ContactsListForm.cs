@@ -19,13 +19,13 @@ namespace WindowsFormsClient
         private int ID;
         private string new_contact;
         private int contactID;
-        private MainForm mainForm;
+        private Form1 form1;
 
 
-        public ContactsListForm(MainForm f)
+        public ContactsListForm(Form1 f)
         {
             InitializeComponent();
-            mainForm = f;           
+            form1 = f;           
         }
 
         private void ContactsListForm_Load(object sender, EventArgs e)
@@ -80,7 +80,7 @@ namespace WindowsFormsClient
                 update_command_1.ExecuteNonQuery();
                 db.CloseConnection();
 
-                mainForm.update_ContactslistBox();
+                form1.update_ContactslistBox();
 
 
                 // mainForm.ContactslistBox.Items.Add($"{contact} (id:{ID})");

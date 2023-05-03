@@ -37,7 +37,7 @@ namespace WindowsFormsClient
             catch (MySqlException)
             {
                 var result = MessageBox.Show("Обратитесь к администратору", "Не удалось подключиться к серверу", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
-
+                connect_flag = false;
                 if (result == DialogResult.Cancel)
                 {
                     Application.Exit();
@@ -49,9 +49,25 @@ namespace WindowsFormsClient
 
         // метод для закрытия соединения с базой данных
         public void CloseConnection()
-        {
-            if (connection.State == System.Data.ConnectionState.Open)
-                connection.Close();
+        {            
+            try
+            {
+                if (connection.State == System.Data.ConnectionState.Open)
+                    connection.Close();
+                connect_flag = true;
+
+            }
+            catch (MySqlException)
+            {
+                var result = MessageBox.Show("Обратитесь к администратору", "Не удалось подключиться к серверу", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                connect_flag = false;
+                if (result == DialogResult.Cancel)
+                {
+                    Application.Exit();
+                    return;
+                }
+
+            }
 
         }
 

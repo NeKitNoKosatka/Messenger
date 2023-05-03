@@ -100,6 +100,9 @@ namespace WindowsFormsClient
             } while (!db.connect_flag);
 
 
+            
+
+
 
             MySqlDataReader reader;
             reader = command.ExecuteReader();
@@ -120,8 +123,12 @@ namespace WindowsFormsClient
      
             
             reader.Close();
+
+            do
+            {
+                db.CloseConnection();
+            } while (!db.connect_flag);
             
-            db.CloseConnection();
 
             //command.Parameters.Add("@uL", OleDbType.VarChar).Value = loginUser;
             //command.Parameters.Add("@uP", OleDbType.VarChar).Value = passUser;

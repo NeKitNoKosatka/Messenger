@@ -36,14 +36,15 @@ namespace WindowsFormsClient
             // 
             // ContactslistBox
             // 
+            this.ContactslistBox.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ContactslistBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ContactslistBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.ContactslistBox.FormattingEnabled = true;
-            this.ContactslistBox.ItemHeight = 20;
-            this.ContactslistBox.Location = new System.Drawing.Point(0, 36);
+            this.ContactslistBox.ItemHeight = 16;
+            this.ContactslistBox.Location = new System.Drawing.Point(0, 29);
             this.ContactslistBox.Margin = new System.Windows.Forms.Padding(1);
             this.ContactslistBox.Name = "ContactslistBox";
-            this.ContactslistBox.Size = new System.Drawing.Size(418, 420);
+            this.ContactslistBox.Size = new System.Drawing.Size(372, 336);
             this.ContactslistBox.TabIndex = 0;
             this.ContactslistBox.SelectedIndexChanged += new System.EventHandler(this.ContactslistBox_SelectedIndexChanged);
             // 
@@ -52,7 +53,7 @@ namespace WindowsFormsClient
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(418, 20);
+            this.label1.Size = new System.Drawing.Size(372, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "Новый контакт";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -69,9 +70,10 @@ namespace WindowsFormsClient
             this.closing_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Turquoise;
             this.closing_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closing_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.closing_button.Location = new System.Drawing.Point(378, 0);
+            this.closing_button.Location = new System.Drawing.Point(336, 0);
+            this.closing_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.closing_button.Name = "closing_button";
-            this.closing_button.Size = new System.Drawing.Size(40, 32);
+            this.closing_button.Size = new System.Drawing.Size(36, 26);
             this.closing_button.TabIndex = 14;
             this.closing_button.Text = "X";
             this.closing_button.UseVisualStyleBackColor = false;
@@ -79,13 +81,14 @@ namespace WindowsFormsClient
             // 
             // ContactsListForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(418, 456);
+            this.ClientSize = new System.Drawing.Size(372, 365);
             this.Controls.Add(this.closing_button);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ContactslistBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ContactsListForm";
             this.Text = "ContactsListForm";
             this.Load += new System.EventHandler(this.ContactsListForm_Load);

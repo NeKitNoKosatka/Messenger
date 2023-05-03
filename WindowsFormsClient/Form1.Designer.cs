@@ -226,6 +226,7 @@ namespace WindowsFormsClient
             this.send_button.Size = new System.Drawing.Size(45, 45);
             this.send_button.TabIndex = 2;
             this.send_button.UseVisualStyleBackColor = false;
+            this.send_button.Click += new System.EventHandler(this.send_button_Click);
             this.send_button.MouseDown += new System.Windows.Forms.MouseEventHandler(this.send_mess_button_MouseDown);
             this.send_button.MouseEnter += new System.EventHandler(this.send_mess_button_MouseEnter);
             this.send_button.MouseLeave += new System.EventHandler(this.send_mess_button_MouseLeave);
@@ -518,6 +519,11 @@ namespace WindowsFormsClient
             this.ContactslistBox.TabIndex = 2;
             this.ContactslistBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ContactslistBox_DrawItem);
             this.ContactslistBox.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.ContactslistBox_MeasureItem);
+            this.ContactslistBox.SelectedIndexChanged += new System.EventHandler(this.ContactslistBox_SelectedIndexChanged);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
             // 
             // Form1
             // 
