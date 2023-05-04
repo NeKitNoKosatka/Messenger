@@ -29,6 +29,9 @@ namespace WindowsFormsClient
         private int chatID = -1;
         private int msg_count;
 
+        
+
+
         public Form1()
         {
             InitializeComponent();
@@ -84,6 +87,7 @@ namespace WindowsFormsClient
             if (msg != null && ((msg.UserID == AuthorizationForm.UserID && msg.ReceiverID == Convert.ToInt32(contactID)) || (msg.UserID == Convert.ToInt32(contactID) && msg.ReceiverID == AuthorizationForm.UserID)))
             {
                 MessageslistBox.Items.Add(msg);
+                create_panel(msg);
                 MessageID++;
                 //msg = API.GetMessage(MessageID);    
             }
@@ -368,7 +372,15 @@ namespace WindowsFormsClient
 
         private void ContactslistBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Console.WriteLine("selected index: " + ContactslistBox.SelectedIndex);
+            if (ContactslistBox.SelectedIndex == -1)
+                return;
+
             MessageslistBox.Items.Clear();
+            while (MassageBox.Controls.Count > 0)
+            {
+                MassageBox.Controls[0].Dispose();
+            }
             msg_count = 0;
 
             string selected_contact = (string)ContactslistBox.SelectedItem;
@@ -402,7 +414,7 @@ namespace WindowsFormsClient
 
                 reader.Close();
 
-                string query_old_messages = "SELECT users.user_id, users.first_name, users.second_name, s.chat_id, s.content, s.send_date FROM(SELECT message.chat_id, message.sender_id, content.content, message.send_date FROM content JOIN message ON content.content_id = message.content_id WHERE message.chat_id = @chat_id) s JOIN users ON users.user_id = s.sender_id;";
+                string query_old_messages = "SELECT users.user_id, users.first_name, users.second_name, s.chat_id, s.content, s.send_date FROM(SELECT message.chat_id, message.sender_id, content.content, message.send_date FROM content JOIN message ON content.content_id = message.content_id WHERE message.chat_id = @chat_id) s JOIN users ON users.user_id = s.sender_id ORDER BY s.send_date ASC;";
 
                 MySqlCommand command_old_messages = new MySqlCommand(query_old_messages, db.GetConnection());
 
@@ -421,6 +433,7 @@ namespace WindowsFormsClient
                     userName = reader.GetString(1) + " " + reader.GetString(2);
                     Messenger.Message msg_old = new Messenger.Message(userName, reader.GetString(4), reader.GetDateTime(5), reader.GetInt32(0), 0, chatID);
                     MessageslistBox.Items.Add(msg_old);
+                    create_panel(msg_old);
 
                     msg_count += 1;
 
@@ -477,12 +490,13 @@ namespace WindowsFormsClient
             userName = AuthorizationForm.UserName;
 
             bool connect_flag = false;
-
+            Messenger.Message msg = new Messenger.Message(userName, Message, DateTime.Now, AuthorizationForm.UserID, Convert.ToInt32(contactID), chatID); //edit 2(chatID)
+            
             do
             {
                 try
                 {
-                    Messenger.Message msg = new Messenger.Message(userName, Message, DateTime.Now, AuthorizationForm.UserID, Convert.ToInt32(contactID), chatID); //edit 2(chatID)
+                    
                     API.SendMessage(msg);
                     connect_flag = true;
                 }
@@ -499,8 +513,75 @@ namespace WindowsFormsClient
                 }
             } while (!connect_flag);
 
-
             MessagesrichTB.Text = "";
+
+
+            //create_panel(msg);
+            //chek = !chek;   //temp
         }
+
+
+        private void create_panel(Messenger.Message msg)
+        {
+
+            //Console.WriteLine("msg: " + msg);
+            //Console.WriteLine("sender id: " + msg.UserID);
+            bool chek = isSender(msg);
+            string text = msg.MessageText;
+
+            Label text_label = new Label();
+            Label time_label = new Label();
+
+
+            text_label.Text = text;
+            time_label.Text = msg.TimeStamp.ToShortTimeString();
+
+            Font stringFont = new Font("Arial", 13);
+            text_label.Width = 180;
+            text_label.Font = stringFont;
+            text_label.Dock = DockStyle.Fill;
+            text_label.Padding = new Padding(5);
+            text_label.AutoSize = true;
+            text_label.AutoEllipsis = true;
+            text_label.MaximumSize = new Size(307, 0);
+            text_label.MinimumSize = new Size(60, 0);
+
+            Font timestringFont = new Font("Arial", 7);
+            time_label.Font = timestringFont;
+            time_label.Dock = DockStyle.Bottom;
+            time_label.TextAlign = ContentAlignment.MiddleRight;
+
+            Panel panel_min = new Panel();
+
+            panel_min.AutoSize = true;
+            panel_min.MaximumSize = new Size(327, 0);
+
+            if (chek)   
+            {
+                panel_min.BackColor = Color.FromArgb(202, 255, 252);
+                panel_min.Anchor = AnchorStyles.Right;
+            }
+            else
+            {                
+                panel_min.BackColor = Color.FromArgb(245, 245, 245);
+                panel_min.Anchor = AnchorStyles.Left;
+            }
+
+            panel_min.Parent = MassageBox;
+            text_label.Parent = panel_min;
+            time_label.Parent = panel_min;
+
+            MassageBox.ScrollControlIntoView(panel_min);
+        }
+
+        private bool isSender(Messenger.Message msg)
+        {
+            if (msg.UserID == AuthorizationForm.UserID)
+                return true;
+            else
+                return false;
+        }
+
+
     }
 }
