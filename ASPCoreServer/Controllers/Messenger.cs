@@ -77,7 +77,7 @@ namespace ASPCoreServer.Controllers
                     var date = message.TimeStamp.ToString("u").Remove(x);
                     command.Parameters.Add("@send_date", MySqlDbType.VarChar).Value = date;
                     
-                    Console.WriteLine(message.ChatID);
+                    //Console.WriteLine(message.ChatID);
 
                     db.OpenConnection();
                     MySqlDataReader reader;

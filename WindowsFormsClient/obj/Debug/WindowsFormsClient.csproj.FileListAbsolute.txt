@@ -29,3 +29,4 @@ C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\De
 C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\Debug\WindowsFormsClient.exe
 C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\Debug\WindowsFormsClient.Form1.resources
 C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\Debug\WindowsFormsClient.csproj.AssemblyReference.cache
+C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\Debug\WindowsFormsClient.test.resources
