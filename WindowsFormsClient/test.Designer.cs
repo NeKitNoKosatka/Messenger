@@ -35,8 +35,9 @@ namespace WindowsFormsClient
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -110,6 +111,17 @@ namespace WindowsFormsClient
             this.panel1.Size = new System.Drawing.Size(142, 46);
             this.panel1.TabIndex = 5;
             // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 4.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(0, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(142, 12);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "15:42";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // label1
             // 
             this.label1.AutoEllipsis = true;
@@ -122,16 +134,15 @@ namespace WindowsFormsClient
             this.label1.TabIndex = 0;
             this.label1.Text = "textextetexttetxttetxttetxtetetxtetxtet";
             // 
-            // label2
+            // button2
             // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 4.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(0, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(142, 12);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "15:42";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.Location = new System.Drawing.Point(50, 227);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "clear";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // test
             // 
@@ -139,6 +150,7 @@ namespace WindowsFormsClient
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.panel);
@@ -166,5 +178,6 @@ namespace WindowsFormsClient
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button2;
     }
 }

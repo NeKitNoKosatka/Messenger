@@ -15,41 +15,15 @@ namespace WindowsFormsClient
     {
         bool chek = true;
 
-        Size size_txt;
+        //Size size_txt;
 
         public test()
         {
             InitializeComponent();                
-            
-            
+                        
         }
 
-        private void MeasureStringMin(PaintEventArgs e)
-        {
-
-            // Set up string.
-            string measureString = textBox1.Text;
-            Font stringFont = new Font("Arial", 13);
-
-            // Measure string.
-            SizeF stringSize = new SizeF();
-            stringSize = e.Graphics.MeasureString(measureString, stringFont);
-
-            Console.WriteLine("size: " + stringSize);
-            
-        }
-
-
-        private void RegisterEventHandler()
-        {
-            //text_label.SizeChanged += new EventHandler(this.text_label_SizeChanged);
-        }
-
-        private void text_label_SizeChanged(object sender, System.EventArgs e)
-        {
-            //MessageBox.Show("The size of the 'Button' control has changed. Size: " + size_txt);
-        }
-
+      
 
         private void create_panel(bool chek, string text)
         {
@@ -213,6 +187,14 @@ namespace WindowsFormsClient
 
             //size_txt = stringSize;
             //Console.WriteLine("size: " + stringSize);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            while (tableLayoutPanel1.Controls.Count > 0)
+            {
+                tableLayoutPanel1.Controls[0].Dispose();
+            }
         }
     }
 }

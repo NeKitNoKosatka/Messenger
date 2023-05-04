@@ -149,6 +149,7 @@ namespace WindowsFormsClient
             if (msg != null && ((msg.UserID == AuthorizationForm.UserID && msg.ReceiverID == Convert.ToInt32(contactID)) || (msg.UserID == Convert.ToInt32(contactID) && msg.ReceiverID == AuthorizationForm.UserID)))
             {
                 MessageslistBox.Items.Add(msg);
+
                 MessageID++;
                 //msg = API.GetMessage(MessageID);    
             }
