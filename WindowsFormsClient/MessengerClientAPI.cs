@@ -23,7 +23,7 @@ namespace Messenger
             string output = JsonConvert.SerializeObject(msg);
             Console.WriteLine(output);
             Message deserializedMsg = JsonConvert.DeserializeObject<Message>(output);
-            Console.WriteLine(deserializedMsg);
+            //Console.WriteLine(deserializedMsg);
             //string path = @"d:\temp\ser.txt";
             //using (StreamWriter sw = new StreamWriter(path, false, System.Text.Encoding.Default))
             //{

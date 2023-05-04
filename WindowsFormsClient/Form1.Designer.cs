@@ -40,14 +40,11 @@ namespace WindowsFormsClient
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.MessagesrichTB = new System.Windows.Forms.RichTextBox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.send_button = new System.Windows.Forms.Button();
-            this.send_button_pictureBox = new System.Windows.Forms.PictureBox();
             this.MessageslistBox = new System.Windows.Forms.ListBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.name_label = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.secondname_label = new System.Windows.Forms.Label();
             this.job_label = new System.Windows.Forms.Label();
             this.phone_label = new System.Windows.Forms.Label();
@@ -61,6 +58,9 @@ namespace WindowsFormsClient
             this.new_contact_button = new System.Windows.Forms.Button();
             this.ContactslistBox = new System.Windows.Forms.ListBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.send_button = new System.Windows.Forms.Button();
+            this.send_button_pictureBox = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -69,13 +69,13 @@ namespace WindowsFormsClient
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.send_button_pictureBox)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.send_button_pictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -213,37 +213,6 @@ namespace WindowsFormsClient
             this.panel5.Size = new System.Drawing.Size(70, 66);
             this.panel5.TabIndex = 2;
             // 
-            // send_button
-            // 
-            this.send_button.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.send_button.FlatAppearance.BorderSize = 0;
-            this.send_button.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.send_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.send_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.send_button.Image = global::WindowsFormsClient.Properties.Resources.send;
-            this.send_button.Location = new System.Drawing.Point(13, 12);
-            this.send_button.Name = "send_button";
-            this.send_button.Size = new System.Drawing.Size(45, 45);
-            this.send_button.TabIndex = 2;
-            this.send_button.UseVisualStyleBackColor = false;
-            this.send_button.Click += new System.EventHandler(this.send_button_Click);
-            this.send_button.MouseDown += new System.Windows.Forms.MouseEventHandler(this.send_mess_button_MouseDown);
-            this.send_button.MouseEnter += new System.EventHandler(this.send_mess_button_MouseEnter);
-            this.send_button.MouseLeave += new System.EventHandler(this.send_mess_button_MouseLeave);
-            this.send_button.MouseUp += new System.Windows.Forms.MouseEventHandler(this.send_mess_button_MouseUp);
-            // 
-            // send_button_pictureBox
-            // 
-            this.send_button_pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.send_button_pictureBox.Image = global::WindowsFormsClient.Properties.Resources.send_button_back;
-            this.send_button_pictureBox.Location = new System.Drawing.Point(0, 0);
-            this.send_button_pictureBox.Margin = new System.Windows.Forms.Padding(8, 3, 3, 0);
-            this.send_button_pictureBox.Name = "send_button_pictureBox";
-            this.send_button_pictureBox.Size = new System.Drawing.Size(70, 66);
-            this.send_button_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.send_button_pictureBox.TabIndex = 0;
-            this.send_button_pictureBox.TabStop = false;
-            // 
             // MessageslistBox
             // 
             this.MessageslistBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(255)))), ((int)(((byte)(202)))));
@@ -332,19 +301,6 @@ namespace WindowsFormsClient
             this.name_label.Size = new System.Drawing.Size(241, 25);
             this.name_label.TabIndex = 1;
             this.name_label.Text = "Name";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::WindowsFormsClient.Properties.Resources.user1;
-            this.pictureBox1.Location = new System.Drawing.Point(27, 32);
-            this.pictureBox1.Name = "pictureBox1";
-            this.tableLayoutPanel2.SetRowSpan(this.pictureBox1, 6);
-            this.pictureBox1.Size = new System.Drawing.Size(137, 204);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // secondname_label
             // 
@@ -525,6 +481,50 @@ namespace WindowsFormsClient
             // 
             this.timer1.Enabled = true;
             // 
+            // send_button
+            // 
+            this.send_button.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.send_button.FlatAppearance.BorderSize = 0;
+            this.send_button.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.send_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.send_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.send_button.Image = global::WindowsFormsClient.Properties.Resources.send;
+            this.send_button.Location = new System.Drawing.Point(13, 12);
+            this.send_button.Name = "send_button";
+            this.send_button.Size = new System.Drawing.Size(45, 45);
+            this.send_button.TabIndex = 2;
+            this.send_button.UseVisualStyleBackColor = false;
+            this.send_button.Click += new System.EventHandler(this.send_button_Click);
+            this.send_button.MouseDown += new System.Windows.Forms.MouseEventHandler(this.send_mess_button_MouseDown);
+            this.send_button.MouseEnter += new System.EventHandler(this.send_mess_button_MouseEnter);
+            this.send_button.MouseLeave += new System.EventHandler(this.send_mess_button_MouseLeave);
+            this.send_button.MouseUp += new System.Windows.Forms.MouseEventHandler(this.send_mess_button_MouseUp);
+            // 
+            // send_button_pictureBox
+            // 
+            this.send_button_pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.send_button_pictureBox.Image = global::WindowsFormsClient.Properties.Resources.send_button_back;
+            this.send_button_pictureBox.Location = new System.Drawing.Point(0, 0);
+            this.send_button_pictureBox.Margin = new System.Windows.Forms.Padding(8, 3, 3, 0);
+            this.send_button_pictureBox.Name = "send_button_pictureBox";
+            this.send_button_pictureBox.Size = new System.Drawing.Size(70, 66);
+            this.send_button_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.send_button_pictureBox.TabIndex = 0;
+            this.send_button_pictureBox.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::WindowsFormsClient.Properties.Resources.user1;
+            this.pictureBox1.Location = new System.Drawing.Point(27, 32);
+            this.pictureBox1.Name = "pictureBox1";
+            this.tableLayoutPanel2.SetRowSpan(this.pictureBox1, 6);
+            this.pictureBox1.Size = new System.Drawing.Size(137, 204);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -550,16 +550,16 @@ namespace WindowsFormsClient
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.send_button_pictureBox)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.send_button_pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

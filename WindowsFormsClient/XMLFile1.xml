@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Border Name="ChatScreen" Style="{StaticResource Screen}">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="50" />
+			<RowDefinition />
+			<RowDefinition Height="50"/>
+		</Grid.RowDefinitions>
+
+		<Border Grid.Row="0" Style="{StaticResource HeaderBorder}">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="1*" />
+					<ColumnDefinition Width="6*" />
+					<ColumnDefinition Width="1*" />
+				</Grid.ColumnDefinitions>
+
+				<Button Style="{StaticResource NavButton}" Grid.Column="0" Name="BackButton" Content="←" Click="BackButton_Click"/>
+
+				<TextBlock Style="{StaticResource HeaderBlock}" Text="" VerticalAlignment="Center" Name="ChatName" Grid.Column="1"/>
+
+
+			</Grid>
+
+		</Border>
+
+		<Border Grid.Row="1">
+			<ListBox ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"
+						Style="{StaticResource ContactsList}" Name="MessagesList" Focusable="False"
+						HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<ListBoxItem>
+							<Border Style="{StaticResource MessageBorder}" HorizontalAlignment="{Binding Alignment}">
+								<StackPanel Orientation="Vertical">
+									<TextBlock Text="{Binding Text}" Style="{StaticResource MessageText}"/>
+									<TextBlock Text="{Binding Date}" Style="{StaticResource MessageDate}"/>
+								</StackPanel>
+							</Border>
+						</ListBoxItem>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+		</Border>
+
+		<Border Grid.Row="2" Style="{StaticResource HeaderBorder}">
+			<Grid>
+
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="6*" />
+					<ColumnDefinition Width="1*" />
+				</Grid.ColumnDefinitions>
+
+				<TextBox Name="MessageBox" Style="{StaticResource MessageBox}" Grid.Column="0"/>
+
+				<Button Style="{StaticResource NavButton}" Grid.Column="1" Name="SendButton" Content="→" Click="SendButton_Click"/>
+
+			</Grid>
+		</Border>
+	</Grid>
+</Border>
+
