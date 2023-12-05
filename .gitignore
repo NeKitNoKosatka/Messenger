@@ -1,0 +1,25 @@
+
+**/bin
+**/obj
+
+# ignore all dlls, exes, caches, pdbs, suos
+*.exe
+*.dll
+*.cache
+*.pdb
+*.suo
+
+.vs/*
+
+graphs/*
+/Massanger/.vs
+*.vsidx
+/WindowsFormsClient/.vs/WindowsFormsClient/FileContentIndex/5be12345-8cf7-4029-b869-6597af26352c.vsidx
+/WindowsFormsClient/.vs/WindowsFormsClient/FileContentIndex/5be12345-8cf7-4029-b869-6597af26352c.vsidx
+/WindowsFormsClient/.vs/WindowsFormsClient/FileContentIndex/5be12345-8cf7-4029-b869-6597af26352c.vsidx
+/WindowsFormsClient/.vs/WindowsFormsClient/FileContentIndex/5be12345-8cf7-4029-b869-6597af26352c.vsidx
+/WindowsFormsClient/.vs/WindowsFormsClient/FileContentIndex/5be12345-8cf7-4029-b869-6597af26352c.vsidx
+/WindowsFormsClient/.vs/WindowsFormsClient/FileContentIndex/5be12345-8cf7-4029-b869-6597af26352c.vsidx
+/.vs/Messenger/v17/.wsuo
+/Massanger/.vs/Messanger/FileContentIndex/b743c1af-4ec9-41ec-aa65-064f792fb029.vsidx
+/WindowsFormsClient/.vs/WindowsFormsClient/v17/.suo
