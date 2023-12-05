@@ -1,5 +1,6 @@
 
 **/bin
+**/obj
 
 # ignore all dlls, exes, caches, pdbs, suos
 *.exe
@@ -8,4 +9,14 @@
 *.pdb
 *.suo
 
+.vs/*
+
 graphs/*
+/Massanger/.vs
+*.vsidx
+/WindowsFormsClient/.vs/WindowsFormsClient/FileContentIndex/5be12345-8cf7-4029-b869-6597af26352c.vsidx
+/WindowsFormsClient/.vs/WindowsFormsClient/FileContentIndex/5be12345-8cf7-4029-b869-6597af26352c.vsidx
+/WindowsFormsClient/.vs/WindowsFormsClient/FileContentIndex/5be12345-8cf7-4029-b869-6597af26352c.vsidx
+/WindowsFormsClient/.vs/WindowsFormsClient/FileContentIndex/5be12345-8cf7-4029-b869-6597af26352c.vsidx
+/WindowsFormsClient/.vs/WindowsFormsClient/FileContentIndex/5be12345-8cf7-4029-b869-6597af26352c.vsidx
+/WindowsFormsClient/.vs/WindowsFormsClient/FileContentIndex/5be12345-8cf7-4029-b869-6597af26352c.vsidx
