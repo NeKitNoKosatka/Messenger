@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Source\\Desktop\\Работы\\Своё\\projects\\test\\test.csproj": {}
+    "C:\\Users\\Nikita\\Desktop\\перенос\\Своё\\projects\\Messenger\\test\\test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Source\\Desktop\\Работы\\Своё\\projects\\test\\test.csproj": {
+    "C:\\Users\\Nikita\\Desktop\\перенос\\Своё\\projects\\Messenger\\test\\test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Source\\Desktop\\Работы\\Своё\\projects\\test\\test.csproj",
+        "projectUniqueName": "C:\\Users\\Nikita\\Desktop\\перенос\\Своё\\projects\\Messenger\\test\\test.csproj",
         "projectName": "test",
-        "projectPath": "C:\\Users\\Source\\Desktop\\Работы\\Своё\\projects\\test\\test.csproj",
-        "packagesPath": "C:\\Users\\Source\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Source\\Desktop\\Работы\\Своё\\projects\\test\\obj\\",
+        "projectPath": "C:\\Users\\Nikita\\Desktop\\перенос\\Своё\\projects\\Messenger\\test\\test.csproj",
+        "packagesPath": "C:\\Users\\Nikita\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nikita\\Desktop\\перенос\\Своё\\projects\\Messenger\\test\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Source\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Nikita\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -25,7 +25,8 @@
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -48,16 +49,35 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.17, 5.0.17]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
