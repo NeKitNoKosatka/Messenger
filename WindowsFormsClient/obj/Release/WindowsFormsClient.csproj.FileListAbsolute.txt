@@ -28,3 +28,5 @@ C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\Re
 C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\Release\WindowsFormsClient.csproj.CopyComplete
 C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\Release\WindowsFormsClient.exe
 C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\Release\WindowsFormsClient.pdb
+C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\Release\WindowsFormsClient.Form1.resources
+C:\Users\Source\Desktop\Работы\Своё\projects\WindowsFormsClient\obj\Release\WindowsFormsClient.test.resources
