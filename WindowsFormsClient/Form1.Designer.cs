@@ -109,7 +109,7 @@ namespace WindowsFormsClient
             this.panel1.Location = new System.Drawing.Point(504, 3);
             this.panel1.Name = "panel1";
             this.tableLayoutPanel1.SetRowSpan(this.panel1, 2);
-            this.panel1.Size = new System.Drawing.Size(820, 658);
+            this.panel1.Size = new System.Drawing.Size(820, 659);
             this.panel1.TabIndex = 3;
             // 
             // tableLayoutPanel6
@@ -128,7 +128,7 @@ namespace WindowsFormsClient
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(820, 658);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(820, 659);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // panel3
@@ -139,7 +139,7 @@ namespace WindowsFormsClient
             this.panel3.Location = new System.Drawing.Point(12, 24);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(784, 586);
+            this.panel3.Size = new System.Drawing.Size(784, 587);
             this.panel3.TabIndex = 0;
             // 
             // panel6
@@ -152,7 +152,7 @@ namespace WindowsFormsClient
             this.panel6.Location = new System.Drawing.Point(24, 24);
             this.panel6.Margin = new System.Windows.Forms.Padding(24, 3, 24, 3);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(760, 562);
+            this.panel6.Size = new System.Drawing.Size(760, 563);
             this.panel6.TabIndex = 1;
             // 
             // tableLayoutPanel8
@@ -169,7 +169,7 @@ namespace WindowsFormsClient
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.48387F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.51613F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(760, 562);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(760, 563);
             this.tableLayoutPanel8.TabIndex = 2;
             // 
             // panel
@@ -180,7 +180,7 @@ namespace WindowsFormsClient
             this.panel.Location = new System.Drawing.Point(3, 3);
             this.panel.Name = "panel";
             this.panel.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.panel.Size = new System.Drawing.Size(754, 474);
+            this.panel.Size = new System.Drawing.Size(754, 475);
             this.panel.TabIndex = 4;
             // 
             // MassageBox
@@ -197,7 +197,7 @@ namespace WindowsFormsClient
             this.MassageBox.RowCount = 2;
             this.MassageBox.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.MassageBox.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.MassageBox.Size = new System.Drawing.Size(754, 469);
+            this.MassageBox.Size = new System.Drawing.Size(754, 470);
             this.MassageBox.TabIndex = 0;
             // 
             // tableLayoutPanel7
@@ -210,7 +210,7 @@ namespace WindowsFormsClient
             this.tableLayoutPanel7.Controls.Add(this.MessagesrichTB, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.panel5, 1, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 480);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 481);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel7.MaximumSize = new System.Drawing.Size(0, 200);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
@@ -282,7 +282,7 @@ namespace WindowsFormsClient
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(255)))), ((int)(((byte)(202)))));
             this.panel4.Controls.Add(this.MessageslistBox);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(12, 610);
+            this.panel4.Location = new System.Drawing.Point(12, 611);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(784, 24);
@@ -321,7 +321,7 @@ namespace WindowsFormsClient
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(495, 305);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(495, 306);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
             // tableLayoutPanel2
@@ -354,7 +354,7 @@ namespace WindowsFormsClient
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.63158F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(459, 275);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(459, 276);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // name_label
@@ -362,7 +362,7 @@ namespace WindowsFormsClient
             this.name_label.AutoEllipsis = true;
             this.name_label.Dock = System.Windows.Forms.DockStyle.Fill;
             this.name_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.name_label.Location = new System.Drawing.Point(191, 30);
+            this.name_label.Location = new System.Drawing.Point(191, 31);
             this.name_label.Margin = new System.Windows.Forms.Padding(24, 0, 3, 0);
             this.name_label.Name = "name_label";
             this.name_label.Size = new System.Drawing.Size(241, 25);
@@ -374,7 +374,7 @@ namespace WindowsFormsClient
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::WindowsFormsClient.Properties.Resources.user1;
-            this.pictureBox1.Location = new System.Drawing.Point(27, 33);
+            this.pictureBox1.Location = new System.Drawing.Point(27, 34);
             this.pictureBox1.Name = "pictureBox1";
             this.tableLayoutPanel2.SetRowSpan(this.pictureBox1, 6);
             this.pictureBox1.Size = new System.Drawing.Size(137, 204);
@@ -387,7 +387,7 @@ namespace WindowsFormsClient
             this.secondname_label.AutoSize = true;
             this.secondname_label.Dock = System.Windows.Forms.DockStyle.Left;
             this.secondname_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.secondname_label.Location = new System.Drawing.Point(191, 55);
+            this.secondname_label.Location = new System.Drawing.Point(191, 56);
             this.secondname_label.Margin = new System.Windows.Forms.Padding(24, 0, 3, 0);
             this.secondname_label.Name = "secondname_label";
             this.secondname_label.Size = new System.Drawing.Size(171, 29);
@@ -399,7 +399,7 @@ namespace WindowsFormsClient
             this.job_label.AutoSize = true;
             this.job_label.Dock = System.Windows.Forms.DockStyle.Left;
             this.job_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.job_label.Location = new System.Drawing.Point(191, 84);
+            this.job_label.Location = new System.Drawing.Point(191, 85);
             this.job_label.Margin = new System.Windows.Forms.Padding(24, 0, 3, 0);
             this.job_label.Name = "job_label";
             this.job_label.Size = new System.Drawing.Size(97, 18);
@@ -412,7 +412,7 @@ namespace WindowsFormsClient
             this.phone_label.AutoSize = true;
             this.phone_label.Dock = System.Windows.Forms.DockStyle.Left;
             this.phone_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.phone_label.Location = new System.Drawing.Point(191, 102);
+            this.phone_label.Location = new System.Drawing.Point(191, 103);
             this.phone_label.Margin = new System.Windows.Forms.Padding(24, 0, 3, 0);
             this.phone_label.Name = "phone_label";
             this.phone_label.Size = new System.Drawing.Size(80, 18);
@@ -425,7 +425,7 @@ namespace WindowsFormsClient
             this.mail_label.AutoSize = true;
             this.mail_label.Dock = System.Windows.Forms.DockStyle.Left;
             this.mail_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mail_label.Location = new System.Drawing.Point(191, 120);
+            this.mail_label.Location = new System.Drawing.Point(191, 121);
             this.mail_label.Margin = new System.Windows.Forms.Padding(24, 0, 3, 0);
             this.mail_label.Name = "mail_label";
             this.mail_label.Size = new System.Drawing.Size(59, 18);
@@ -437,18 +437,19 @@ namespace WindowsFormsClient
             this.mess_count_label.AutoSize = true;
             this.mess_count_label.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mess_count_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mess_count_label.Location = new System.Drawing.Point(170, 138);
+            this.mess_count_label.Location = new System.Drawing.Point(170, 139);
             this.mess_count_label.Name = "mess_count_label";
             this.mess_count_label.Padding = new System.Windows.Forms.Padding(0, 0, 24, 0);
             this.mess_count_label.Size = new System.Drawing.Size(262, 102);
             this.mess_count_label.TabIndex = 5;
             this.mess_count_label.Text = "Всего сообщений: ";
             this.mess_count_label.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.mess_count_label.Visible = false;
             // 
             // panel7
             // 
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel7.Location = new System.Drawing.Point(170, 243);
+            this.panel7.Location = new System.Drawing.Point(170, 244);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(229, 29);
             this.panel7.TabIndex = 6;
@@ -462,7 +463,7 @@ namespace WindowsFormsClient
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 12F));
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 1, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 314);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 315);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));

@@ -73,7 +73,7 @@ namespace WindowsFormsClient
 
             timer1.Start();
 
-            if (MessageID == 5)
+            if (MessageID == 30) //30
             {
                 API.SendMessage(msg);
                 MessageID = 0;
@@ -86,7 +86,7 @@ namespace WindowsFormsClient
 
             if (msg != null && ((msg.UserID == AuthorizationForm.UserID && msg.ReceiverID == Convert.ToInt32(contactID)) || (msg.UserID == Convert.ToInt32(contactID) && msg.ReceiverID == AuthorizationForm.UserID)))
             {
-                MessageslistBox.Items.Add(msg);
+                //MessageslistBox.Items.Add(msg);
                 create_panel(msg);
                 MessageID++;
                 //msg = API.GetMessage(MessageID);    
@@ -372,9 +372,40 @@ namespace WindowsFormsClient
 
         private void ContactslistBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+
+
             //Console.WriteLine("selected index: " + ContactslistBox.SelectedIndex);
             if (ContactslistBox.SelectedIndex == -1)
+            {
+                DataBase db = new DataBase();
+                MySqlDataReader reader;
+                string query_2 = $"SELECT users.user_id, users.first_name, users.second_name FROM users JOIN chat ON users.user_id = chat.user_1 AND chat.user_2 = {AuthorizationForm.UserID} UNION SELECT users.user_id, users.first_name, users.second_name FROM users JOIN chat ON users.user_id = chat.user_2 AND chat.user_1 = {AuthorizationForm.UserID};";
+
+                MySqlCommand command_2 = new MySqlCommand(query_2, db.GetConnection());
+
+                do
+                {
+                    db.OpenConnection();
+                } while (!db.connect_flag);
+
+
+                reader = command_2.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    ID = reader.GetInt32(0);
+                    contact = reader.GetString(1) + " " + reader.GetString(2);
+                    ContactslistBox.Items.Add($"{contact} (id:{ID})");
+                }
+
+                reader.Close();
+                do
+                {
+                    db.CloseConnection();
+                } while (!db.connect_flag);
                 return;
+            } 
 
             MessageslistBox.Items.Clear();
             while (MassageBox.Controls.Count > 0)
@@ -424,7 +455,7 @@ namespace WindowsFormsClient
 
                 MySqlCommand command_info = new MySqlCommand(query_info, db.GetConnection());
 
-                command_info.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = AuthorizationForm.UserID;
+                command_info.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = contactID;   //AuthorizationForm.UserID;
 
                 reader = command_old_messages.ExecuteReader();
 
@@ -445,20 +476,21 @@ namespace WindowsFormsClient
                 reader = command_info.ExecuteReader();
 
                 while (reader.Read())
-                {
+                {   
+
                     job_name = reader.GetString(0);
                     phone = reader.GetString(1);
                     mail = reader.GetString(2);
                 }
                 reader.Close();
-
+                
 
                 do
                 {
                     db.CloseConnection();
                 } while (!db.connect_flag);
 
-                string[] name = contact.Split(' ');
+                string[] name = selected_contact.Split(' ');
 
                 name_label.Text = name[0];
                 secondname_label.Text = name[1];
@@ -514,7 +546,7 @@ namespace WindowsFormsClient
             } while (!connect_flag);
 
             MessagesrichTB.Text = "";
-
+            mess_count_label.Text = "Всего сообщений: " + (msg_count+1).ToString();
 
             //create_panel(msg);
             //chek = !chek;   //temp

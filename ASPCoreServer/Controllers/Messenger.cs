@@ -50,12 +50,13 @@ namespace ASPCoreServer.Controllers
         {
             if (msg == null)
             {
-                return BadRequest();
+                Console.WriteLine("message doesn't sent");
+                //return BadRequest();
             }
 
             
 
-            if (ListOfMessages.Count == 5 && clean_status != true)
+            if (ListOfMessages.Count == 30 && clean_status != true) //30
             {
                 clean_status = true;
                 Console.WriteLine("Cleaning server");
@@ -83,11 +84,13 @@ namespace ASPCoreServer.Controllers
                     MySqlDataReader reader;
                     reader = command.ExecuteReader();
 
-                    while (reader.Read())
-                    {
-                        counter++;
-                        Console.WriteLine("Message №" + counter + "sent to db");
-                    }
+                    counter++;
+                    Console.WriteLine("Message №" + counter + " sent to db");
+                    //while (reader.Read())
+                    //{
+                    //    counter++;
+                    //    Console.WriteLine("Message №" + counter + "sent to db");
+                    //}
 
                     reader.Close();
                     db.CloseConnection();
